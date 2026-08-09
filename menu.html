@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Меню — TOPMAIN × Su&Mo · Уфа</title>
+  <meta name="description" content="Меню TOPMAIN × Su&Mo: сеты, поке, закуски и горячие блюда. Доставка прямо к игровому месту за 15–20 минут." />
+  <link rel="icon" type="image/png" href="logo-white.png?v=2" />
+  <link rel="apple-touch-icon" href="logo-white.png?v=2" />
+  <link href="fonts/fonts.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:#080808; --bg2:#0f0f0f; --s1:rgba(255,255,255,0.04); --s2:rgba(255,255,255,0.07);
+      --b1:rgba(255,255,255,0.08); --b2:rgba(255,255,255,0.18);
+      --w:#ffffff; --g1:rgba(255,255,255,0.60); --g2:rgba(255,255,255,0.35);
+      --gold:#fbbf24;
+      --fh:'Syne',sans-serif; --fb:'Inter',sans-serif;
+      --ease:cubic-bezier(0.4,0,0.2,1); --t:.28s;
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--w); font-family:var(--fb); font-size:16px; line-height:1.6; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; max-width:100%; }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.18); border-radius:2px; }
+
+    .wrap { width:90%; max-width:1000px; margin:0 auto; }
+
+    /* — Header — */
+    header {
+      position:sticky; top:0; z-index:100;
+      background:rgba(8,8,8,.82); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--b1);
+    }
+    .head-in { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .brand { display:flex; align-items:center; gap:10px; }
+    .brand img { width:34px; height:34px; border-radius:8px; border:1px solid var(--b2); object-fit:cover; }
+    .brand-txt { font-family:var(--fh); font-size:1.1rem; font-weight:800; letter-spacing:.06em; }
+    .brand-txt span { color:var(--g2); }
+    .back { display:inline-flex; align-items:center; gap:7px; font-size:.82rem; font-weight:600; color:var(--g1); padding:.55em 1.1em; border:1px solid var(--b1); border-radius:10px; transition:all var(--t); white-space:nowrap; }
+    .back:hover { color:#fff; border-color:var(--b2); background:var(--s1); }
+    .back svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* — Hero — */
+    .m-hero { text-align:center; padding:4rem 0 2rem; }
+    .m-hero .co { display:inline-flex; align-items:center; gap:.7rem; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--g2); margin-bottom:1.1rem; }
+    .m-hero .co b { color:var(--gold); font-weight:700; }
+    .m-hero h1 { font-family:var(--fh); font-size:clamp(2.8rem,11vw,5rem); font-weight:800; letter-spacing:.04em; line-height:1; }
+    .m-hero p { color:var(--g1); margin-top:1rem; font-size:.95rem; }
+
+    /* — Category chips — */
+    .cats {
+      position:sticky; top:64px; z-index:90;
+      display:flex; gap:.5rem; padding:1rem 0; margin-bottom:1rem;
+      overflow-x:auto; scrollbar-width:none;
+      background:linear-gradient(var(--bg) 70%, transparent);
+    }
+    .cats::-webkit-scrollbar { display:none; }
+    .cats .wrap-inner { display:flex; gap:.5rem; }
+    .cat {
+      flex-shrink:0; padding:.6em 1.2em; border-radius:30px;
+      background:var(--s1); border:1px solid var(--b1); color:var(--g1);
+      font-size:.82rem; font-weight:600; letter-spacing:.04em; cursor:pointer; transition:all var(--t);
+    }
+    .cat:hover { color:#fff; border-color:var(--b2); }
+    .cat.active { background:#fff; color:#080808; border-color:transparent; }
+
+    /* — Menu sections — */
+    .m-sec { padding:2.5rem 0 1rem; }
+    .m-sec-head { display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem; }
+    .m-sec-head h2 { font-family:var(--fh); font-size:clamp(1.5rem,5vw,2.2rem); font-weight:800; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+    .m-sec-head .line { flex:1; height:1px; background:var(--b1); }
+
+    .m-item { padding:1.1rem 0; border-bottom:1px solid var(--b1); }
+    .m-item:last-child { border-bottom:none; }
+    .m-row { display:flex; align-items:baseline; gap:.8rem; }
+    .m-name { font-family:var(--fh); font-size:1.08rem; font-weight:700; color:#fff; }
+    .m-name .g { color:var(--g2); font-family:var(--fb); font-size:.78rem; font-weight:400; margin-left:.4rem; }
+    .m-lead { flex:1; border-bottom:1px dotted rgba(255,255,255,.18); transform:translateY(-3px); min-width:18px; }
+    .m-price { font-family:var(--fh); font-size:1.08rem; font-weight:800; color:var(--gold); white-space:nowrap; }
+    .m-desc { color:var(--g1); font-size:.86rem; line-height:1.55; margin-top:.45rem; max-width:680px; }
+
+    /* — Note / footer — */
+    .m-note {
+      margin:2rem 0; padding:1.1rem 1.4rem;
+      background:var(--s1); border:1px solid var(--b1); border-radius:14px;
+      font-size:.85rem; color:var(--g1); display:flex; align-items:center; gap:.7rem;
+    }
+    .m-note svg { width:20px; height:20px; flex-shrink:0; fill:none; stroke:var(--gold); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+    footer { border-top:1px solid var(--b1); padding:2.5rem 0; margin-top:2rem; text-align:center; }
+    footer p { color:var(--g2); font-size:.8rem; margin-bottom:.4rem; }
+    .f-cta { display:inline-flex; gap:.6rem; margin-top:1rem; }
+    .f-cta a { padding:.7em 1.4em; border-radius:11px; font-size:.85rem; font-weight:700; }
+    .f-tg { background:#fff; color:#080808; }
+    .f-back { background:var(--s1); border:1px solid var(--b2); color:#fff; }
+
+    @media(max-width:640px) {
+      .head-in { height:58px; }
+      .brand-txt { font-size:1rem; }
+      .back { padding:.5em .9em; font-size:.78rem; }
+      .cats { top:58px; }
+      .m-row { flex-wrap:wrap; }
+      .m-lead { display:none; }
+      .m-price { margin-left:auto; }
+      .m-name { font-size:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <div class="head-in">
+      <a href="index.html#hero" class="brand">
+        <img src="logo.jpg" alt="TOPMAIN" />
+        <span class="brand-txt">TOP<span>MAIN</span></span>
+      </a>
+      <a href="index.html" class="back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        На главную
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="m-hero">
+    <div class="co">TOPMAIN <b>×</b> Su&amp;Mo · Sushi &amp; Seafood</div>
+    <h1>МЕНЮ</h1>
+    <p>Кухня от Su&amp;Mo с доставкой прямо к твоему игровому месту</p>
+  </div>
+</div>
+
+<!-- CATEGORY CHIPS -->
+<div class="cats">
+  <div class="wrap" style="display:flex;">
+    <div class="wrap-inner">
+      <a class="cat active" href="#sety">Сеты</a>
+      <a class="cat" href="#rolly">Роллы</a>
+      <a class="cat" href="#poke">Поке</a>
+      <a class="cat" href="#zakuski">Закуски</a>
+      <a class="cat" href="#hot">Горячие блюда</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- СЕТЫ -->
+  <section class="m-sec" id="sety">
+    <div class="m-sec-head"><h2>Сеты</h2><div class="line"></div></div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Сет TopMain <span class="g">на 2 персоны</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">2400 ₽</div>
+      </div>
+      <div class="m-desc">Ролл TopMain · Филадельфия с угрем запеч. · Филадельфия с неркой · Камчадал ролл</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Сет Su&amp;Mo <span class="g">на 4 персоны</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">3900 ₽</div>
+      </div>
+      <div class="m-desc">Фирменный ролл Su&amp;Mo · Филадельфия с палтусом · Атлантика ролл запеч. · Эльбрус ролл запеч. · Чукотский ролл запеч. · Торатау ролл запеч.</div>
+    </div>
+  </section>
+
+  <!-- РОЛЛЫ -->
+  <section class="m-sec" id="rolly">
+    <div class="m-sec-head"><h2>Роллы</h2><div class="line"></div></div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Филадельфия с неркой <span class="g">260 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">690 ₽</div>
+      </div>
+      <div class="m-desc">Нерка слабой соли, огурец, сливочный сыр, рис, нори</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Эльбрус <span class="g">230 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">540 ₽</div>
+      </div>
+      <div class="m-desc">Морской окунь холодного копчения, креветка королевская, сливочный сыр, фирменный соус, кунжут чёрный, кунжут белый, рис, нори, унаги соус</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Филадельфия с палтусом <span class="g">285 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">760 ₽</div>
+      </div>
+      <div class="m-desc">Палтус холодного копчения, сливочный сыр, огурец, рис, нори, унаги соус</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Баренцевоморский <span class="g">215 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">950 ₽</div>
+      </div>
+      <div class="m-desc">Краб камчатский, огурец, сливочный сыр, авокадо, рис, чёрный кунжут, нори</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Ролл TopMain <span class="g">265 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">790 ₽</div>
+      </div>
+      <div class="m-desc">Креветка северная, тунец, чука, сыр cremetta, рис, кунжут, унаги, нори</div>
+    </div>
+  </section>
+
+  <!-- ПОКЕ -->
+  <section class="m-sec" id="poke">
+    <div class="m-sec-head"><h2>Поке</h2><div class="line"></div></div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Поке с угрём <span class="g">245 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">620 ₽</div>
+      </div>
+      <div class="m-desc">Рис, помидорки черри, чукка, огурец, авокадо, гамадари соус ореховый, соевый соус, угорь, унаги соус</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Поке с неркой <span class="g">240 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">520 ₽</div>
+      </div>
+      <div class="m-desc">Рис, помидорки черри, чукка, огурец, авокадо, гамадари соус ореховый, соевый соус, нерка</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Поке с креветками <span class="g">245 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">570 ₽</div>
+      </div>
+      <div class="m-desc">Рис, помидорки черри, чукка, огурец, авокадо, гамадари соус ореховый, соевый соус, креветки, унаги соус</div>
+    </div>
+  </section>
+
+  <!-- ЗАКУСКИ -->
+  <section class="m-sec" id="zakuski">
+    <div class="m-sec-head"><h2>Закуски</h2><div class="line"></div></div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Картофель фри <span class="g">180 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">280 ₽</div>
+      </div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Батат фри <span class="g">180 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">430 ₽</div>
+      </div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Закусочная тарелка №1 <span class="g">150 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">1310 ₽</div>
+      </div>
+      <div class="m-desc">Фисташки 50 г · Говядина строганина вяленая 25 г · Кролик строганина вяленая 25 г · Маслянка холодного копчения 50 г</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Закусочная тарелка №2 <span class="g">350 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">1390 ₽</div>
+      </div>
+      <div class="m-desc">Маслянка холодного копчения 50 г · Нерка слабой соли 50 г · Креветки жареные 250 г</div>
+    </div>
+  </section>
+
+  <!-- ГОРЯЧИЕ БЛЮДА -->
+  <section class="m-sec" id="hot">
+    <div class="m-sec-head"><h2>Горячие блюда</h2><div class="line"></div></div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Тепаньяки нерка <span class="g">310 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">760 ₽</div>
+      </div>
+      <div class="m-desc">Рис варёный, яйцо, нерка, перец молотый, чеснок, лук репчатый, болгарский перец сладкий, соевый соус</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Паста с креветками <span class="g">340 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">650 ₽</div>
+      </div>
+      <div class="m-desc">Паста, сливки, креветки, лук, пармезан, шпинат</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Фирменный Том Ям <span class="g">500 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">1090 ₽</div>
+      </div>
+      <div class="m-desc">Черри, шампиньоны, соус чили, масло, том ям паста, шрирача, чеснок сушёный, соль, перец чёрный молотый, сахар, краб камчатский, креветки, гребешок, 20% сливки, кокосовые сливки, рис, лимон, бульон</div>
+    </div>
+
+    <div class="m-item">
+      <div class="m-row">
+        <div class="m-name">Фаршированные мидии <span class="g">175 г</span></div>
+        <div class="m-lead"></div>
+        <div class="m-price">870 ₽</div>
+      </div>
+      <div class="m-desc">Мидии, гребешок сахалинский, креветка королевская, фирменный соус, унаги соус, кунжут белый, рис</div>
+    </div>
+  </section>
+
+  <div class="m-note">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    Доставка прямо к игровому месту за 15–20 минут. Полное меню — по QR-коду у администратора.
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>TOPMAIN · Уфа, ул. Коммунистическая, 50 · Работаем 24/7</p>
+    <p>Кухня — Su&amp;Mo · Sushi and Seafood</p>
+    <p><a href="privacy.html" style="color:var(--g1);text-decoration:underline;">Политика конфиденциальности</a></p>
+    <div class="f-cta">
+      <a href="https://t.me/topmainufa" target="_blank" rel="noopener" class="f-tg">Заказать в Telegram</a>
+      <a href="index.html" class="f-back">На главную</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ COOKIE BANNER ══════════ -->
+<div id="cookieBar" role="dialog" aria-label="Уведомление об использовании cookie" aria-live="polite" style="
+  position:fixed; left:50%; bottom:16px; transform:translateX(-50%);
+  z-index:2100; width:min(680px,92%);
+  background:rgba(14,14,14,.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:1.1rem 1.3rem; box-shadow:0 12px 40px rgba(0,0,0,.55);
+  font-family:'Inter',sans-serif; color:rgba(255,255,255,.82);
+  display:none; flex-direction:column; gap:.9rem;">
+  <div style="font-size:.85rem; line-height:1.55;">
+    Мы используем файлы cookie и обрабатываем данные для корректной работы сайта.
+    Продолжая пользоваться сайтом, вы соглашаетесь с
+    <a href="privacy.html" style="color:#fff; text-decoration:underline;">Политикой конфиденциальности</a>.
+  </div>
+  <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+    <button id="cookieOk" style="
+      background:#fff; color:#080808; border:none; border-radius:10px;
+      padding:.6em 1.4em; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer;">
+      Принять
+    </button>
+    <a href="privacy.html" style="
+      background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:10px;
+      padding:.6em 1.4em; font-size:.85rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center;">
+      Подробнее
+    </a>
+  </div>
+</div>
+<script>
+  (function(){
+    var KEY='topmain_cookie_consent';
+    var bar=document.getElementById('cookieBar');
+    if(!bar) return;
+    try { if(localStorage.getItem(KEY)==='1') return; } catch(e){}
+    bar.style.display='flex';
+    document.getElementById('cookieOk').addEventListener('click',function(){
+      try { localStorage.setItem(KEY,'1'); } catch(e){}
+      bar.style.display='none';
+    });
+  })();
+</script>
+
+<script>
+  // Подсветка активной категории при скролле
+  const cats = [...document.querySelectorAll('.cat')];
+  const secs = cats.map(c => document.querySelector(c.getAttribute('href')));
+  window.addEventListener('scroll', () => {
+    let idx = 0;
+    secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= 160) idx = i; });
+    cats.forEach((c, i) => c.classList.toggle('active', i === idx));
+  }, { passive:true });
+</script>
+
+</body>
+</html>

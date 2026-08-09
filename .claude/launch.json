@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "topmain",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3333", "--directory", "C:\\Users\\leved\\OneDrive\\Рабочий стол\\Папка Лев\\проекты\\topmain1"],
+      "port": 3333
+    }
+  ]
+}

@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPMAIN – Игровой клуб в Уфе</title>
+  <meta name="description" content="TOPMAIN – Кибер лаунж комфорт класса в Уфе. Буткемп, Дуо, Соло и PS5 залы. Бар с едой. Работаем 24/7." />
+  <meta name="keywords" content="компьютерный клуб Уфа, TOPMAIN, Кибер лаунж комфорт класса, PS5, буткемп, игровой клуб Уфа" />
+  <meta property="og:title" content="TOPMAIN – Кибер лаунж комфорт класса в Уфе" />
+  <meta property="og:description" content="Кибер лаунж комфорт класса. Буткемп, Дуо, Соло и PS5 залы. 24/7." />
+  <meta property="og:image" content="neon.JPG" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="neon.JPG" />
+  <link rel="icon" type="image/png" href="logo-white.png?v=2" />
+  <link rel="apple-touch-icon" href="logo-white.png?v=2" />
+  <link href="fonts/fonts.css" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --bg:    #080808;
+      --bg2:   #0f0f0f;
+      --bg3:   #141414;
+      --s1:    rgba(255,255,255,0.04);
+      --s2:    rgba(255,255,255,0.07);
+      --s3:    rgba(255,255,255,0.12);
+      --b1:    rgba(255,255,255,0.08);
+      --b2:    rgba(255,255,255,0.18);
+      --b3:    rgba(255,255,255,0.30);
+      --w:     #ffffff;
+      --g1:    rgba(255,255,255,0.60);
+      --g2:    rgba(255,255,255,0.35);
+      --g3:    rgba(255,255,255,0.18);
+      --fh:    'Syne', sans-serif;
+      --fb:    'Inter', sans-serif;
+      --r:     14px;
+      --ease:  cubic-bezier(0.4,0,0.2,1);
+      --t:     0.28s;
+    }
+
+    /* ── RESET ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--w); font-family:var(--fb); font-size:16px; line-height:1.65; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; max-width:100%; }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.18); border-radius:2px; }
+
+
+    /* ── MOUSE GLOW ──────────────────────────────────── */
+    #glow { position:fixed; inset:0; pointer-events:none; z-index:0; background:radial-gradient(ellipse 700px 600px at 50% 50%, rgba(255,255,255,0.025) 0%, transparent 70%); }
+
+    /* ── LAYOUT ──────────────────────────────────────── */
+    .wrap { width:90%; max-width:1200px; margin:0 auto; position:relative; z-index:2; }
+    section { padding:100px 0; position:relative; }
+
+    /* ── REVEAL ──────────────────────────────────────── */
+    .rv { opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+    .rv.on { opacity:1; transform:none; }
+    .d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s} .d4{transition-delay:.32s}
+
+    /* ── GLASS ───────────────────────────────────────── */
+    .glass { background:var(--s1); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--b1); border-radius:var(--r); }
+    .glass:hover { border-color:var(--b2); }
+
+    /* ── LABEL ───────────────────────────────────────── */
+    .lbl { display:inline-flex; align-items:center; gap:8px; font-size:.71rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--g2); margin-bottom:1.1rem; }
+    .lbl::before { content:''; width:18px; height:1.5px; background:var(--g2); border-radius:1px; }
+
+    /* ── TITLES ──────────────────────────────────────── */
+    .st { font-family:var(--fh); font-size:clamp(2rem,5vw,3.4rem); font-weight:800; line-height:1.08; letter-spacing:-.025em; }
+    .st em { font-style:normal; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.45); }
+    .ssub { color:var(--g1); font-size:1rem; max-width:500px; margin-top:.9rem; line-height:1.7; }
+
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn { display:inline-flex; align-items:center; gap:9px; padding:.82em 1.8em; border-radius:10px; font-family:var(--fb); font-size:.9rem; font-weight:600; cursor:pointer; border:none; outline:none; transition:all var(--t) var(--ease); }
+    .btn-w { background:#fff; color:#080808; box-shadow:0 0 28px rgba(255,255,255,.1),0 4px 18px rgba(0,0,0,.5); }
+    .btn-w:hover { transform:translateY(-2px); box-shadow:0 0 48px rgba(255,255,255,.2),0 10px 30px rgba(0,0,0,.5); background:#f0f0f0; }
+    .btn-g { background:var(--s1); color:#fff; border:1px solid var(--b1); backdrop-filter:blur(10px); }
+    .btn-g:hover { border-color:var(--b2); background:var(--s2); transform:translateY(-2px); }
+
+    /* ── DECO LINE ───────────────────────────────────── */
+    .lv { position:absolute; top:0; bottom:0; width:1px; background:var(--b1); pointer-events:none; z-index:0; }
+
+    /* ══════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════ */
+    header { position:fixed; top:0; left:0; width:100%; z-index:900; }
+    .navpill {
+      position:absolute; top:12px; left:50%; transform:translateX(-50%);
+      z-index:1001;
+      width:90%; max-width:1200px;
+      min-height:54px;
+      background:rgba(8,8,8,.75); backdrop-filter:blur(22px); -webkit-backdrop-filter:blur(22px);
+      border:1px solid var(--b1); border-radius:14px;
+      display:flex; align-items:center; flex-wrap:nowrap; padding:0 1.2rem;
+      justify-content:space-between; gap:.5rem;
+      transition:background var(--t);
+    }
+    .navpill.scrolled { background:rgba(8,8,8,.98); border-color:var(--b2); box-shadow:0 4px 32px rgba(0,0,0,.4); }
+
+    /* LOGO with image */
+    .nav-logo {
+      display:flex; align-items:center; gap:10px;
+      flex-shrink:0;
+      text-decoration:none;
+      min-width:0;
+    }
+    .nav-logo img {
+      width:34px; height:34px;
+      min-width:34px; min-height:34px;
+      border-radius:8px;
+      object-fit:cover;
+      border:1px solid var(--b2);
+      display:block;
+      flex-shrink:0;
+    }
+    .nav-logo-text {
+      font-family:var(--fh); font-size:1.15rem; font-weight:800;
+      letter-spacing:.06em;
+      color:#fff;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+    .nav-logo-text span { color:rgba(255,255,255,.4); }
+
+    /* Desktop nav links */
+    .nav-links-desktop { display:flex; align-items:center; gap:.1rem; list-style:none; flex-shrink:1; min-width:0; }
+    .nav-links-desktop a { padding:.38em .65em; font-size:.79rem; font-weight:500; color:var(--g1); border-radius:8px; transition:color var(--t),background var(--t); white-space:nowrap; }
+    .nav-links-desktop a:hover { color:#fff; background:var(--s2); }
+
+    /* Mobile nav — hidden by default */
+    .nav-links-mobile { display:none; }
+
+    /* CTA button in nav — never shrink */
+    .navpill > a.btn { flex-shrink:0; }
+
+    /* Hide lower-priority nav items on medium screens */
+    @media(max-width:1100px) {
+      .nav-links-desktop .hide-md { display:none; }
+      .navpill > a.btn { font-size:.73rem; padding:.45em .9em; }
+    }
+    @media(max-width:860px) {
+      .nav-links-desktop .hide-sm { display:none; }
+    }
+
+    .bchk { display:none; }
+    .bbtn { display:none; flex-direction:column; gap:4px; cursor:pointer; padding:6px; }
+    .bbtn span { display:block; width:21px; height:2px; background:#fff; border-radius:2px; transition:var(--t) var(--ease); }
+
+    /* ══════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════ */
+    #hero { min-height:100vh; display:flex; align-items:center; padding-top:80px; overflow:hidden; }
+    .hero-wm { position:absolute; right:-4%; top:50%; transform:translateY(-50%); font-family:var(--fh); font-size:clamp(180px,26vw,360px); font-weight:800; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.03); pointer-events:none; user-select:none; line-height:1; z-index:1; }
+    .hero-lay { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; width:100%; }
+
+    .hero-tag { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; background:var(--s2); border:1px solid var(--b1); border-radius:50px; font-size:.72rem; font-weight:600; color:var(--g1); letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.4rem; }
+    .hero-tag::before { content:''; width:6px; height:6px; background:#fff; border-radius:50%; animation:blink 1.6s ease infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+    h1.hh { font-family:var(--fh); font-size:clamp(2.8rem,7vw,5.2rem); font-weight:800; line-height:1.0; letter-spacing:-.03em; margin-bottom:1.1rem; }
+    h1.hh .out { color:transparent; -webkit-text-stroke:1.5px rgba(255,255,255,.38); }
+    .hdesc { color:var(--g1); font-size:1.04rem; line-height:1.72; max-width:420px; margin-bottom:2.2rem; }
+    .hbtns { display:flex; gap:.9rem; flex-wrap:wrap; }
+
+    .hstats { display:flex; gap:2.2rem; margin-top:2.8rem; padding-top:2rem; border-top:1px solid var(--b1); }
+    .stat-n { font-family:var(--fh); font-size:1.65rem; font-weight:800; }
+    .stat-n sup { font-size:.85rem; color:var(--g2); }
+    .stat-l { font-size:.74rem; color:var(--g2); margin-top:2px; text-transform:uppercase; letter-spacing:.08em; }
+
+    /* Hero right */
+    .hcard { position:relative; height:460px; perspective:1100px; }
+    .hcard-inner { position:absolute; inset:0; transform-style:preserve-3d; transition:transform .35s var(--ease); will-change:transform; }
+    .hcard-main { position:absolute; inset:30px 0 0; background:#fff; border:1px solid var(--b1); border-radius:20px; overflow:hidden; padding:0; transform:translateZ(0); box-shadow:0 30px 60px rgba(0,0,0,.45); }
+    .hcard-bg { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+    /* Logo in card — full bleed edge to edge */
+    .hcard-logo-wrap { position:absolute; inset:0; display:flex; flex-direction:column; align-items:stretch; justify-content:flex-end; gap:0; opacity:1; padding:0; }
+    .hcard-logo-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:20px; }
+    .hcard-logo-wrap span { position:relative; z-index:2; text-align:center; padding:2.5rem 1.5rem 2rem; font-family:var(--fh); font-size:2.6rem; font-weight:800; letter-spacing:.18em; color:#080808; background:linear-gradient(transparent, rgba(255,255,255,.97) 40%); border-radius:0 0 20px 20px; }
+    .hcard-info { position:relative; z-index:1; }
+    .hcard-label { font-size:.68rem; color:var(--g2); text-transform:uppercase; letter-spacing:.12em; margin-bottom:4px; }
+    .hcard-name { font-family:var(--fh); font-size:1.05rem; font-weight:700; }
+    .hcard-spec { font-size:.78rem; color:var(--g1); margin-top:3px; }
+
+    /* Spec chips — плавают справа с разной глубиной */
+    .hspecs { position:absolute; top:18px; right:-18px; display:flex; flex-direction:column; align-items:flex-end; gap:.5rem; z-index:5; }
+    .hspec {
+      display:flex; align-items:center; gap:.5rem;
+      background:rgba(12,12,12,.82); border:1px solid rgba(255,255,255,.18);
+      border-radius:11px; padding:.55rem .85rem;
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 8px 24px rgba(0,0,0,.45);
+      font-family:var(--fh); font-size:.82rem; font-weight:700; color:#fff;
+      white-space:nowrap; will-change:transform;
+      transition:transform .35s var(--ease);
+    }
+    .hspec svg { width:15px; height:15px; fill:none; stroke:#fff; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; opacity:.7; flex-shrink:0; }
+    .hspec em { font-style:normal; color:var(--g2); font-weight:500; font-size:.74rem; }
+
+    .haddr {
+      position:absolute; bottom:-10px; left:-20px;
+      background:rgba(8,8,8,0.88); border:1px solid rgba(255,255,255,0.25);
+      border-radius:12px; padding:.75rem 1.1rem;
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      font-size:.8rem; color:rgba(255,255,255,0.9); white-space:nowrap; z-index:5;
+      will-change:transform; transition:transform .35s var(--ease);
+      box-shadow:0 12px 30px rgba(0,0,0,.4);
+    }
+    .haddr strong { color:#fff; display:block; font-size:.84rem; font-family:var(--fh); }
+
+    /* ══════════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════════ */
+    #about { background:var(--bg2); }
+    .about-lay { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+
+    .alist { list-style:none; display:flex; flex-direction:column; gap:.9rem; margin-top:1.8rem; }
+    .aitem { display:flex; gap:.9rem; align-items:flex-start; padding:1rem; border-radius:12px; border:1px solid transparent; transition:border-color var(--t),background var(--t); }
+    .aitem:hover { background:var(--s1); border-color:var(--b1); }
+    .aico { flex-shrink:0; width:38px; height:38px; background:var(--s2); border:1px solid var(--b1); border-radius:9px; display:flex; align-items:center; justify-content:center; }
+    .aico svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.7; }
+    .aitem-t { font-weight:600; font-size:.93rem; margin-bottom:3px; }
+    .aitem-d { font-size:.84rem; color:var(--g1); line-height:1.5; }
+
+    .about-r { display:flex; flex-direction:column; gap:1.4rem; }
+    .avis { aspect-ratio:4/3; border-radius:20px; overflow:visible; background:#080808; border:1px solid rgba(255,145,0,.2); position:relative; display:flex; align-items:center; justify-content:center;
+      box-shadow:
+        0 0 50px  rgba(255,140,0,.32),
+        0 0 100px rgba(255,120,0,.14),
+        0 0 50px  rgba(0,20,160,.70),
+        0 0 110px rgba(0,10,140,.50),
+        0 0 180px rgba(10,0,120,.30); }
+    .avis-inner { width:100%; height:100%; border-radius:20px; overflow:hidden; position:relative; }
+    .avis-photo { width:100%; height:100%; object-fit:cover; display:block; border-radius:20px; }
+    .avis-overlay { position:absolute; inset:0; border-radius:20px;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,140,0,.06) 0%, transparent 60%),
+        radial-gradient(ellipse 120% 80% at 50% 120%, rgba(0,15,140,.55) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 60% at 15% 50%, rgba(0,20,160,.20) 0%, transparent 60%); }
+    /* old placeholder — hidden */
+    .avis-logo { display:none; }
+
+    .ccard { padding:1.3rem 1.5rem; }
+    .crow { display:flex; align-items:center; gap:.9rem; padding:.6rem 0; border-bottom:1px solid var(--b1); font-size:.88rem; }
+    .crow:last-child { border-bottom:none; }
+    .cico { width:32px; height:32px; background:var(--s2); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .cico svg { width:16px; height:16px; fill:none; stroke:rgba(255,255,255,.6); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .crow a { color:var(--g1); transition:color var(--t); }
+    .crow a:hover { color:#fff; }
+
+    /* ══════════════════════════════════════════════════
+       HALLS
+    ══════════════════════════════════════════════════ */
+    #halls { background:var(--bg); }
+    .halls-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; }
+    .halls-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    .hcard2 { background:var(--bg2); border:1px solid var(--b1); border-radius:var(--r); padding:1.8rem 1.5rem; display:flex; flex-direction:column; gap:.9rem; transition:background var(--t),border-color var(--t),transform var(--t); cursor:default; position:relative; overflow:hidden; }
+    .hcard2::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:rgba(255,255,255,.28); transition:width .4s var(--ease); }
+    .hcard2:hover { background:var(--bg3); border-color:var(--b2); transform:translateY(-6px); }
+    .hcard2:hover::after { width:100%; }
+    .h2-ico { width:46px; height:46px; background:var(--s2); border:1px solid var(--b1); border-radius:12px; display:flex; align-items:center; justify-content:center; transition:background var(--t),border-color var(--t); }
+    .hcard2:hover .h2-ico { background:var(--s3); border-color:var(--b2); }
+    .h2-ico svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; opacity:.75; }
+    .h2-name { font-family:var(--fh); font-size:1rem; font-weight:700; }
+    .h2-desc { font-size:.83rem; color:var(--g1); line-height:1.55; }
+    .h2-tag { font-size:.71rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--g2); padding:.3em .75em; background:var(--s2); border:1px solid var(--b1); border-radius:50px; display:inline-block; width:fit-content; }
+
+    /* ══════════════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════════════ */
+    #services { background:var(--bg2); }
+    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--b1); border-radius:var(--r); overflow:hidden; margin-top:3rem; }
+    .svc { background:var(--bg2); padding:2.2rem 1.8rem; display:flex; flex-direction:column; gap:.9rem; position:relative; overflow:hidden; transition:background var(--t); }
+    .svc::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:rgba(255,255,255,.22); transition:width .4s var(--ease); }
+    .svc:hover { background:var(--bg3); }
+    .svc:hover::after { width:100%; }
+    .svc-ico { width:46px; height:46px; background:var(--s1); border:1px solid var(--b1); border-radius:11px; display:flex; align-items:center; justify-content:center; transition:background var(--t),border-color var(--t); }
+    .svc:hover .svc-ico { background:var(--s3); border-color:var(--b2); }
+    .svc-ico svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; opacity:.72; }
+    .svc-t { font-family:var(--fh); font-size:.97rem; font-weight:700; }
+    .svc-d { font-size:.84rem; color:var(--g1); line-height:1.55; }
+    .svc-arr { margin-top:auto; color:var(--g2); transition:color var(--t),transform var(--t); }
+    .svc-arr svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .svc:hover .svc-arr { color:#fff; transform:translate(4px,-4px); }
+
+    /* ══════════════════════════════════════════════════
+       GALLERY
+    ══════════════════════════════════════════════════ */
+    #gallery {
+      background: linear-gradient(180deg,
+        #0f0f0f 0%,
+        #0c0e18 8%,
+        #090c1c 16%,
+        #07091d 28%,
+        #07091d 72%,
+        #090c1c 84%,
+        #0c0e18 92%,
+        #0f0f0f 100%
+      );
+    }
+    #gallery > .wrap { position:relative; z-index:1; }
+    .gal-head { text-align:center; margin-bottom:3rem; }
+
+    .gal-head .ssub { margin:0 auto; text-align:center; }
+
+    .gal-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:260px 260px 260px; gap:.9rem; }
+    .gi { border-radius:var(--r); overflow:hidden; position:relative; background:var(--bg3); border:1px solid var(--b1); cursor:pointer; }
+
+    .gi-inner { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.8rem;
+      background:radial-gradient(ellipse at 35% 40%, rgba(20,40,120,0.22) 0%, transparent 65%),
+                 linear-gradient(160deg, #080d1a 0%, #0c1224 45%, #080a14 100%);
+      transition:transform .5s var(--ease); }
+    .gi:first-child .gi-inner {
+      background:radial-gradient(ellipse at 30% 55%, rgba(10,30,110,0.28) 0%, transparent 60%),
+                 linear-gradient(175deg, #070b18 0%, #0a1020 50%, #060810 100%);
+    }
+    .gi:hover .gi-inner { transform:scale(1.05); }
+    .gi-icon { width:48px; height:48px; opacity:.2; transition:opacity .3s; }
+    .gi-icon svg { width:100%; height:100%; fill:none; stroke:#a0b4e0; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+    .gi-cap { font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(140,165,220,.4); transition:color .3s; }
+    .gi:hover .gi-icon { opacity:.5; }
+    .gi:hover .gi-cap { color:rgba(160,185,240,.75); }
+    .gi-ov { position:absolute; inset:0;
+      background:linear-gradient(160deg, rgba(20,50,180,.08) 0%, rgba(10,20,80,.12) 60%, transparent 100%);
+      opacity:0; transition:opacity .4s; }
+    .gi:hover .gi-ov { opacity:1; }
+    /* Real photo support */
+    .gi-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+    .gi:hover .gi-img { transform:scale(1.06); }
+    .gi-label { position:absolute; bottom:0; left:0; right:0; padding:.65rem 1rem; background:linear-gradient(transparent, rgba(0,0,0,.75)); font-size:.68rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.85); z-index:1; }
+
+    /* ══════════════════════════════════════════════════
+       CONTACT — вместо формы
+    ══════════════════════════════════════════════════ */
+    #contact { background:var(--bg2); }
+    .ct-lay { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+
+    /* Left text */
+    .ct-left .ssub { max-width:100%; }
+    .ct-left p.note { font-size:.84rem; color:var(--g2); margin-top:1.5rem; line-height:1.6; }
+
+    /* Right: contact buttons */
+    .ct-btns { display:flex; flex-direction:column; gap:.85rem; }
+
+    .ct-btn {
+      display:flex; align-items:center; gap:1rem;
+      padding:1.2rem 1.5rem;
+      background:var(--s1); border:1px solid var(--b1); border-radius:14px;
+      transition:all var(--t) var(--ease); cursor:pointer;
+      text-decoration:none; color:#fff;
+    }
+    .ct-btn:hover { background:var(--s2); border-color:var(--b2); transform:translateX(6px); }
+
+    .ct-btn-ico {
+      width:46px; height:46px; border-radius:12px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--s2); border:1px solid var(--b1);
+      transition:background var(--t),border-color var(--t);
+    }
+    .ct-btn:hover .ct-btn-ico { background:var(--s3); border-color:var(--b2); }
+    .ct-btn-ico svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; opacity:.8; }
+    /* Telegram icon — filled style */
+    .ico-tg svg { stroke:none !important; fill:#fff; opacity:.8; }
+    /* WhatsApp icon */
+    .ico-wa svg { stroke:none !important; fill:#fff; opacity:.8; }
+
+    .ct-btn-text {}
+    .ct-btn-label { font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--g2); margin-bottom:2px; }
+    .ct-btn-val { font-family:var(--fh); font-size:.95rem; font-weight:700; }
+
+    .ct-btn-arr { margin-left:auto; color:var(--g2); transition:transform var(--t),color var(--t); flex-shrink:0; }
+    .ct-btn-arr svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .ct-btn:hover .ct-btn-arr { color:#fff; transform:translateX(4px); }
+
+    /* ══════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════ */
+    footer { background:var(--bg); border-top:1px solid var(--b1); padding:4rem 0 2rem; }
+    .ft { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid var(--b1); }
+
+    .flogo { display:flex; align-items:center; gap:10px; margin-bottom:.8rem; }
+    .flogo img { width:32px; height:32px; border-radius:8px; object-fit:cover; border:1px solid var(--b2); }
+    .flogo-txt { font-family:var(--fh); font-size:1.4rem; font-weight:800; }
+    .flogo-txt span { color:var(--g2); }
+    .fdesc { font-size:.85rem; color:var(--g1); line-height:1.65; max-width:280px; }
+
+    .fcol-t { font-weight:600; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1.1rem; color:#fff; }
+    .flinks { list-style:none; display:flex; flex-direction:column; gap:.65rem; }
+    .flinks a { font-size:.86rem; color:var(--g1); transition:color var(--t); }
+    .flinks a:hover { color:#fff; }
+    .soclinks { display:flex; flex-direction:column; gap:.6rem; }
+    .socl { display:flex; align-items:center; gap:.75rem; font-size:.86rem; color:var(--g1); padding:.55em .8em; border-radius:8px; border:1px solid transparent; transition:all var(--t); }
+    .socl svg { width:16px; height:16px; opacity:.6; transition:opacity var(--t); flex-shrink:0; }
+    .socl:hover { color:#fff; border-color:var(--b1); background:var(--s1); }
+    .socl:hover svg { opacity:1; }
+
+    .fb2 { display:flex; align-items:center; justify-content:space-between; }
+    .fcopy { font-size:.78rem; color:var(--g2); }
+    .fcredit { color:var(--g3); text-decoration:none; transition:color var(--t); }
+    .fcredit:hover { color:var(--g1); }
+
+    /* ══════════════════════════════════════════════════
+       SPEC CARDS
+    ══════════════════════════════════════════════════ */
+    .specs-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+    }
+    .sc {
+      position:relative;
+      border-radius:18px;
+      overflow:hidden;
+      aspect-ratio:3/4;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      cursor:default;
+      border:1px solid var(--b1);
+      transition:transform .35s var(--ease),border-color .35s var(--ease);
+    }
+    .sc:hover { transform:translateY(-6px) scale(1.01); border-color:var(--b2); }
+    .sc-bg {
+      position:absolute; inset:0;
+      background-size:cover; background-position:center;
+      transition:transform .5s var(--ease);
+    }
+    .sc:hover .sc-bg { transform:scale(1.06); }
+    /* Per-room gradient backgrounds matching the dark photo aesthetic */
+    .sc-bg-main { background:radial-gradient(ellipse at 25% 30%, rgba(255,255,255,.07) 0%, transparent 55%), linear-gradient(170deg,#111 0%,#1a1a1a 50%,#0a0a0a 100%); }
+    .sc-bg-boot { background:radial-gradient(ellipse at 70% 25%, rgba(255,255,255,.06) 0%, transparent 55%), linear-gradient(150deg,#0f0f0f 0%,#181818 50%,#080808 100%); }
+    .sc-bg-duo  { background:radial-gradient(ellipse at 30% 60%, rgba(255,255,255,.05) 0%, transparent 60%), linear-gradient(135deg,#131313 0%,#1c1c1c 60%,#0b0b0b 100%); }
+    .sc-bg-solo { background:radial-gradient(ellipse at 60% 20%, rgba(255,255,255,.06) 0%, transparent 50%), linear-gradient(160deg,#0e0e0e 0%,#1a1a1a 55%,#090909 100%); }
+    .sc-bg-ps5  { background:radial-gradient(ellipse at 40% 70%, rgba(255,255,255,.05) 0%, transparent 55%), linear-gradient(145deg,#101010 0%,#191919 50%,#080808 100%); }
+    .sc-bg-bar  { background:radial-gradient(ellipse at 55% 35%, rgba(255,255,255,.06) 0%, transparent 55%), linear-gradient(155deg,#121212 0%,#1b1b1b 55%,#090909 100%); }
+
+    .sc-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.2) 100%);
+    }
+    .sc-content {
+      position:relative; z-index:2;
+      padding:1.4rem 1.3rem 1.2rem;
+      display:flex; flex-direction:column; gap:1rem;
+      height:100%;
+    }
+    .sc-header { margin-top:auto; }
+    .sc-title {
+      font-family:var(--fh);
+      font-size:clamp(1.6rem,3vw,2.2rem);
+      font-weight:800;
+      line-height:.95;
+      letter-spacing:-.02em;
+      color:#fff;
+      text-shadow:0 2px 12px rgba(0,0,0,.6);
+    }
+    .sc-count {
+      font-size:.78rem;
+      font-weight:600;
+      color:rgba(255,255,255,.55);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      margin-top:.4rem;
+    }
+    .sc-sections { display:flex; flex-direction:column; gap:.7rem; }
+    .sc-sec {}
+    .sc-sec-t {
+      font-size:.65rem;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.4);
+      margin-bottom:.35rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding-bottom:.3rem;
+    }
+    .sc-row {
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      font-size:.78rem;
+      color:rgba(255,255,255,.82);
+      font-weight:500;
+      padding:.18rem 0;
+      line-height:1.3;
+    }
+    .sc-ico {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:16px; height:16px; flex-shrink:0; opacity:.6;
+      background-repeat:no-repeat; background-position:center; background-size:contain;
+    }
+    /* SVG inline icons via CSS mask */
+    .sc-cpu  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='2'/%3E%3Crect x='9' y='9' width='6' height='6'/%3E%3Cpath d='M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='2'/%3E%3Crect x='9' y='9' width='6' height='6'/%3E%3Cpath d='M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-gpu  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='10' rx='2'/%3E%3Cpath d='M7 7V5M12 7V5M17 7V5M7 17v2M12 17v2M17 17v2'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='10' rx='2'/%3E%3Cpath d='M7 7V5M12 7V5M17 7V5M7 17v2M12 17v2M17 17v2'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-ram  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='8' width='20' height='8' rx='1'/%3E%3Cpath d='M6 8V5M10 8V5M14 8V5M18 8V5M6 16v3M10 16v3M14 16v3M18 16v3'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='8' width='20' height='8' rx='1'/%3E%3Cpath d='M6 8V5M10 8V5M14 8V5M18 8V5M6 16v3M10 16v3M14 16v3M18 16v3'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-mon  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8M12 17v4'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2'/%3E%3Cpath d='M8 21h8M12 17v4'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-kb   { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='6' width='20' height='12' rx='2'/%3E%3Cpath d='M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8M6 14h.01M18 14h.01'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='6' width='20' height='12' rx='2'/%3E%3Cpath d='M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8M6 14h.01M18 14h.01'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-ms   { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a8 8 0 0 1 8 8v4a8 8 0 0 1-16 0v-4a8 8 0 0 1 8-8zM12 2v8'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a8 8 0 0 1 8 8v4a8 8 0 0 1-16 0v-4a8 8 0 0 1 8-8zM12 2v8'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-hp   { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 18v-6a9 9 0 0 1 18 0v6'/%3E%3Cpath d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 18v-6a9 9 0 0 1 18 0v6'/%3E%3Cpath d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-tv   { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='15' rx='2'/%3E%3Cpath d='M17 2l-5 5-5-5'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='15' rx='2'/%3E%3Cpath d='M17 2l-5 5-5-5'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-cam  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M20.94 13A9 9 0 1 1 11 3.06'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M20.94 13A9 9 0 1 1 11 3.06'/%3E%3Cpath d='M22 2 11 13'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-mic  { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='2' width='6' height='11' rx='3'/%3E%3Cpath d='M19 10a7 7 0 0 1-14 0M12 19v3M8 22h8'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='2' width='6' height='11' rx='3'/%3E%3Cpath d='M19 10a7 7 0 0 1-14 0M12 19v3M8 22h8'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-ctrl { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='6' width='20' height='12' rx='2'/%3E%3Cpath d='M12 12h.01M8 12h.01M16 12h.01'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='6' width='20' height='12' rx='2'/%3E%3Cpath d='M12 12h.01M8 12h.01M16 12h.01'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-food { background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4l3 3'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v4l3 3'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-drink{ background-color:rgba(255,255,255,.65); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'/%3E%3Cline x1='6' y1='1' x2='6' y2='4'/%3E%3Cline x1='10' y1='1' x2='10' y2='4'/%3E%3Cline x1='14' y1='1' x2='14' y2='4'/%3E%3C/svg%3E") no-repeat center; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8h1a4 4 0 0 1 0 8h-1'/%3E%3Cpath d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'/%3E%3Cline x1='6' y1='1' x2='6' y2='4'/%3E%3Cline x1='10' y1='1' x2='10' y2='4'/%3E%3Cline x1='14' y1='1' x2='14' y2='4'/%3E%3C/svg%3E") no-repeat center; }
+    .sc-logo {
+      position:absolute; bottom:1.1rem; right:1.1rem; z-index:3;
+    }
+    .sc-logo img { width:36px; height:36px; border-radius:8px; object-fit:cover; opacity:.7; }
+
+    /* Mobile specs grid */
+    @media(max-width:1000px) { .specs-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:640px) {
+      .specs-grid {
+        display:flex; gap:.75rem;
+        overflow-x:auto; scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        padding-bottom:4px; scrollbar-width:none;
+        margin-right:-4%; padding-right:4%;
+      }
+      .specs-grid::-webkit-scrollbar { display:none; }
+      .sc { flex:0 0 72vw; max-width:260px; scroll-snap-align:start; aspect-ratio:3/4.5; }
+      .sc-title { font-size:1.5rem; }
+      .sc-row { font-size:.72rem; }
+    }
+
+
+
+    /* ══════════════════════════════════════════════════
+       COUNTERS STRIP
+    ══════════════════════════════════════════════════ */
+    .counters-strip {
+      background:var(--s1);
+      border-top:1px solid var(--b1);
+      border-bottom:1px solid var(--b1);
+      padding:2.5rem 0;
+    }
+    .counters-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1rem;
+      text-align:center;
+    }
+    .cnt-item { padding:1rem; border-right:1px solid var(--b1); }
+    .cnt-item:last-child { border-right:none; }
+    .cnt-num {
+      font-family:var(--fh);
+      font-size:clamp(2rem,4vw,3rem);
+      font-weight:800;
+      color:#fff;
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+    .cnt-num sup { font-size:.5em; vertical-align:super; }
+    .cnt-label { font-size:.8rem; color:var(--g2); margin-top:.4rem; letter-spacing:.04em; }
+    @media(max-width:640px) {
+      .counters-grid { grid-template-columns:repeat(2,1fr); gap:0; }
+      .cnt-item { border-right:none; border-bottom:1px solid var(--b1); padding:.85rem; }
+      .cnt-item:nth-child(odd) { border-right:1px solid var(--b1); }
+      .cnt-item:last-child,.cnt-item:nth-last-child(2):nth-child(odd) { border-bottom:none; }
+      .cnt-num { font-size:1.8rem; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       PRICING
+    ══════════════════════════════════════════════════ */
+    .price-grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:1px;
+      background:var(--b1);
+      border:1px solid var(--b1);
+      border-radius:18px;
+      overflow:hidden;
+      margin-top:2.5rem;
+    }
+    .price-card {
+      background:var(--s1);
+      padding:1.8rem 1.4rem;
+      display:flex; flex-direction:column; gap:.5rem;
+      transition:background var(--t);
+      position:relative;
+    }
+    .price-card:hover { background:var(--s2); }
+    .price-card.featured {
+      background:#fff;
+      color:#080808;
+    }
+    .price-card.featured .price-room,
+    .price-card.featured .price-sub,
+    .price-card.featured .price-feat li { color:#080808; }
+    .price-card.featured .price-feat li::before { color:#080808; opacity:.4; }
+    .price-card.featured .price-badge { background:#080808; color:#fff; }
+    .price-badge {
+      display:inline-block;
+      font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      background:var(--s3); color:rgba(255,255,255,.7);
+      padding:.3em .8em; border-radius:20px;
+      margin-bottom:.3rem;
+      align-self:flex-start;
+    }
+    .price-room { font-family:var(--fh); font-size:1.1rem; font-weight:700; color:#fff; }
+    .price-num {
+      font-family:var(--fh);
+      font-size:2.4rem; font-weight:800;
+      line-height:1; letter-spacing:-.03em;
+      color:#fff;
+    }
+    .price-card.featured .price-num { color:#080808; }
+    .price-num sub { font-size:.45em; font-weight:500; opacity:.6; vertical-align:baseline; }
+    .price-sub { font-size:.72rem; color:var(--g2); margin-top:.1rem; }
+    .price-feat { list-style:none; margin-top:.8rem; display:flex; flex-direction:column; gap:.3rem; margin-top:auto; padding-top:.8rem; border-top:1px solid rgba(255,255,255,.08); }
+    .price-card.featured .price-feat { border-top-color:rgba(0,0,0,.1); }
+    .price-feat li { font-size:.75rem; color:var(--g1); display:flex; align-items:center; gap:.4rem; }
+    .price-feat li::before { content:'✓'; opacity:.5; flex-shrink:0; }
+    .price-note { text-align:center; margin-top:1.4rem; font-size:.8rem; color:var(--g2); }
+    @media(max-width:1000px) { .price-grid { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:640px) {
+      .price-grid { grid-template-columns:1fr 1fr; }
+      .price-card { padding:1.2rem 1rem; }
+      .price-num { font-size:1.8rem; }
+      .price-card:last-child { grid-column:span 2; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       PRICING ACCORDION
+    ══════════════════════════════════════════════════ */
+    .pa-list { display:flex; flex-direction:column; gap:.6rem; margin-top:2rem; }
+    .pa-item {
+      border:1px solid var(--b1); border-radius:16px;
+      overflow:hidden; background:var(--s1);
+      transition:border-color var(--t), background var(--t);
+    }
+    .pa-item:hover { border-color:var(--b2); }
+    .pa-item.open { border-color:var(--b2); background:var(--s2); }
+    .pa-head {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.1rem 1.4rem; cursor:pointer;
+      transition:background var(--t);
+    }
+    .pa-head:hover { background:var(--s2); }
+    .pa-head-l { display:flex; align-items:center; gap:1rem; }
+    .pa-icon { width:36px; height:36px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .pa-icon svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.85; }
+    .pa-name { font-family:var(--fh); font-size:1.1rem; font-weight:700; color:#fff; }
+    .pa-sub { font-size:.78rem; color:var(--g2); margin-top:.15rem; }
+    .pa-arrow {
+      color:var(--g2); transition:transform .3s var(--ease);
+      display:flex; align-items:center;
+    }
+    .pa-item.open .pa-arrow { transform:rotate(180deg); }
+    .pa-body {
+      max-height:0; overflow:hidden;
+      transition:max-height .4s var(--ease), padding .3s;
+      padding:0 1.4rem;
+    }
+    .pa-item.open .pa-body {
+      max-height:600px; padding:.8rem 1.4rem 1.4rem;
+    }
+    .pa-cols { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+    .pa-col {
+      border:1px solid var(--b1); border-radius:16px;
+      overflow:hidden;
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:0 4px 24px rgba(0,0,0,.18);
+    }
+    .pa-col-label {
+      padding:.7rem 1rem; font-size:.76rem; font-weight:700;
+      color:#fff; background:var(--s2);
+      border-bottom:1px solid var(--b1);
+      display:flex; align-items:center; gap:.45rem;
+    }
+    .pa-col-label svg { width:13px; height:13px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; opacity:.7; flex-shrink:0; }
+    .pa-r {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:.6rem 1rem; font-size:.85rem; color:var(--g1);
+      border-bottom:1px solid rgba(255,255,255,.04);
+      transition:background .15s;
+    }
+    .pa-r:last-child { border-bottom:none; }
+    .pa-r:hover { background:rgba(255,255,255,.03); }
+    .pa-r span:last-child {
+      font-family:var(--fh); font-weight:700; color:#fff; font-size:.9rem;
+    }
+    .pa-hl { background:rgba(251,191,36,.05); }
+    .pa-hl span:first-child { font-weight:600; color:#fff; }
+    .pa-hl span:last-child { color:#fbbf24; }
+    .pa-hl small { color:var(--g2); font-weight:400; font-size:.72rem; margin-left:.3rem; }
+    @media(max-width:640px) {
+      .pa-cols { grid-template-columns:1fr; }
+      .pa-head { padding:.9rem 1rem; }
+      .pa-item.open .pa-body { padding:0 1rem 1rem; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       PROMO BANNERS
+    ══════════════════════════════════════════════════ */
+    .promo-grid {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:1rem;
+      margin-top:2rem;
+    }
+    .promo-card {
+      flex:0 1 calc((100% - 1rem) / 2);
+      min-width:0;
+      border:1px solid var(--b1);
+      border-radius:16px;
+      padding:1.6rem;
+      background:var(--s1);
+      display:flex; flex-direction:column; gap:.7rem;
+      transition:border-color var(--t), background var(--t), transform var(--t);
+      position:relative; overflow:hidden;
+    }
+    .promo-card::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:rgba(255,255,255,.22); transition:width .4s var(--ease); }
+    .promo-card:hover { border-color:var(--b2); background:var(--s2); transform:translateY(-4px); }
+    .promo-card:hover::after { width:100%; }
+    .promo-card.wide { grid-column:span 3; }
+    .promo-card.full { grid-column:span 6; }
+    /* широкий центрированный баннер */
+    .promo-card.feature {
+      flex-basis:100%;
+      text-align:center;
+      align-items:center;
+      padding:2.2rem 1.6rem;
+    }
+    .promo-card.feature .promo-value { font-size:2.3rem; }
+    .promo-card.feature .promo-desc { max-width:600px; }
+    .promo-card.feature .promo-note { width:100%; text-align:center; }
+    .promo-emoji { width:44px; height:44px; background:var(--s2); border:1px solid var(--b1); border-radius:11px; display:flex; align-items:center; justify-content:center; }
+    .promo-emoji svg { width:22px; height:22px; fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.8; }
+    .promo-badge { display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:rgba(251,191,36,.12); color:#fbbf24; border:1px solid rgba(251,191,36,.2); padding:.28em .8em; border-radius:20px; width:fit-content; }
+    .promo-value { font-family:var(--fh); font-size:1.9rem; font-weight:800; color:#fff; line-height:1.1; letter-spacing:-.02em; }
+    .promo-title { font-family:var(--fh); font-size:1rem; font-weight:700; color:#fff; }
+    .promo-desc { font-size:.82rem; color:var(--g1); line-height:1.55; }
+    .promo-note { font-size:.73rem; color:var(--g2); margin-top:auto; padding-top:.5rem; border-top:1px solid var(--b1); line-height:1.45; }
+    @media(max-width:900px) { .promo-card { flex-basis:calc((100% - 1rem) / 2); } }
+    /* Кнопка "Показать все акции" — базовый стиль, скрыта на десктопе */
+    .promo-more {
+      display:none;
+      margin:1.4rem auto 0;
+      align-items:center; justify-content:center; gap:.5rem;
+      width:100%; max-width:320px;
+      padding:.9em 1.4em;
+      background:var(--s1); border:1px solid var(--b2); border-radius:12px;
+      color:#fff; font-family:var(--fb); font-size:.9rem; font-weight:700;
+      letter-spacing:.02em; cursor:pointer; outline:none;
+      transition:background var(--t), border-color var(--t);
+    }
+    .promo-more:focus { outline:none; }
+    .promo-more:focus-visible { border-color:var(--g2); }
+    .promo-more:hover, .promo-more:active { background:var(--s2); border-color:var(--g2); }
+    .promo-more::after { content:'↓'; font-size:1em; }
+    .promo-more.expanded::after { content:'↑'; }
+
+    @media(max-width:640px) {
+      .promo-grid { flex-direction:column; gap:.85rem; }
+      .promo-card { flex:0 0 auto; width:100%; padding:1.3rem; gap:.6rem; }
+      .promo-value { font-size:1.5rem; }
+      .promo-title { font-size:.9rem; }
+      .promo-desc { font-size:.82rem; line-height:1.55; }
+      .promo-note { font-size:.72rem; }
+      .promo-emoji { width:38px; height:38px; border-radius:9px; }
+      .promo-emoji svg { width:18px; height:18px; }
+      /* свернуть акции: показываем первые 4, остальное под кнопкой */
+      .promo-grid.collapsed .promo-card:nth-child(n+5) { display:none; }
+      .promo-more { display:flex; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       REVIEWS
+    ══════════════════════════════════════════════════ */
+    .rev-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2.5rem; }
+    .rev-card {
+      border:1px solid var(--b1);
+      border-radius:16px;
+      padding:1.5rem;
+      background:var(--s1);
+      display:flex; flex-direction:column; gap:.9rem;
+      transition:border-color var(--t);
+    }
+    .rev-card:hover { border-color:var(--b2); }
+    .rev-top { display:flex; align-items:center; gap:.75rem; }
+    .rev-ava {
+      width:42px; height:42px; border-radius:50%;
+      background:linear-gradient(135deg, #1c1c1c, #2e2e2e);
+      border:1px solid rgba(255,255,255,.12);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--fh); font-size:.75rem; font-weight:700;
+      color:rgba(255,255,255,.65); flex-shrink:0;
+      letter-spacing:.03em;
+    }
+    .rev-name { font-size:.9rem; font-weight:600; color:#fff; }
+    .rev-date { display:none; }
+    .rev-stars { color:#fff; font-size:.85rem; letter-spacing:.1em; }
+    .rev-text { font-size:.83rem; color:var(--g1); line-height:1.6; }
+    .rev-source { display:none; }
+    @media(max-width:1000px) { .rev-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:640px) {
+      .rev-grid { display:flex; gap:.75rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:none; margin-right:-4%; padding-right:4%; }
+      .rev-grid::-webkit-scrollbar { display:none; }
+      .rev-card { flex:0 0 78vw; max-width:280px; scroll-snap-align:start; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════════ */
+    .faq-list { max-width:780px; margin:2.5rem auto 0; display:flex; flex-direction:column; gap:.6rem; }
+    .faq-item {
+      border:1px solid var(--b1);
+      border-radius:12px;
+      background:var(--s1);
+      overflow:hidden;
+      transition:border-color var(--t);
+    }
+    .faq-item.open { border-color:var(--b2); }
+    .faq-q {
+      padding:1.1rem 1.3rem;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:1rem; cursor:pointer;
+      font-size:.93rem; font-weight:600; color:#fff;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
+    }
+    .faq-q-ico {
+      width:22px; height:22px; border-radius:6px;
+      background:var(--s3); display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:transform .25s var(--ease), background .2s;
+    }
+    .faq-item.open .faq-q-ico { transform:rotate(45deg); background:rgba(255,255,255,.15); }
+    .faq-a {
+      max-height:0; overflow:hidden;
+      transition:max-height .35s var(--ease), padding .35s var(--ease);
+      font-size:.85rem; color:var(--g1); line-height:1.65;
+      padding:0 1.3rem;
+    }
+    .faq-item.open .faq-a { max-height:300px; padding:0 1.3rem 1.2rem; }
+
+    /* ══════════════════════════════════════════════════
+       MAP
+    ══════════════════════════════════════════════════ */
+    .map-wrap {
+      margin:2.5rem auto 0;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--b1);
+      height:400px;
+      position:relative;
+      max-width:100%;
+    }
+    .map-wrap iframe { width:100%; height:100%; border:none; display:block; filter:grayscale(1) invert(0.88) contrast(0.9); }
+    .map-overlay-btn {
+      position:absolute; bottom:1.2rem; right:1.2rem;
+      background:#fff; color:#080808;
+      padding:.7em 1.3em; border-radius:10px;
+      font-family:var(--fb); font-size:.83rem; font-weight:700;
+      text-decoration:none; display:flex; align-items:center; gap:.5rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.3);
+      transition:transform .2s, box-shadow .2s;
+    }
+    .map-overlay-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.4); }
+    @media(max-width:640px) { .map-wrap { height:260px; } }
+
+    /* ══════════════════════════════════════════════════
+       STICKY BOTTOM BAR (mobile only)
+    ══════════════════════════════════════════════════ */
+    .mob-bar {
+      display:none; /* shown only on mobile via media query */
+      position:fixed;
+      bottom:0; left:0; right:0;
+      z-index:800;
+      background:rgba(10,10,10,.92);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border-top:1px solid var(--b1);
+      padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+      transform:translateY(0);
+      transition:transform .35s var(--ease);
+    }
+    .mob-bar.hide { transform:translateY(100%); }
+    .mob-bar-inner {
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:8px;
+    }
+    .mb-btn {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      padding:8px 4px;
+      border-radius:12px;
+      border:1px solid var(--b1);
+      background:var(--s1);
+      color:#fff;
+      font-family:var(--fb);
+      font-size:.68rem;
+      font-weight:600;
+      letter-spacing:.04em;
+      text-decoration:none;
+      transition:background var(--t),border-color var(--t),transform .15s;
+      min-height:56px;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .mb-btn:active { transform:scale(.95); background:var(--s3); }
+    .mb-btn svg { flex-shrink:0; }
+    /* Primary button */
+    .mb-btn.primary {
+      background:#fff;
+      color:#080808;
+      border-color:transparent;
+      box-shadow:0 0 20px rgba(255,255,255,.12);
+    }
+    .mb-btn.primary:active { background:#e8e8e8; }
+
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE — TABLET
+    ══════════════════════════════════════════════════ */
+    @media(max-width:1000px) {
+      .hero-lay  { grid-template-columns:1fr; }
+      .hcard     { display:none; }
+      .hero-wm   { display:none; }
+      .about-lay { grid-template-columns:1fr; }
+      .halls-grid{ grid-template-columns:repeat(2,1fr); }
+      .svc-grid  { grid-template-columns:repeat(2,1fr); }
+      .ct-lay    { grid-template-columns:1fr; gap:2.5rem; }
+      .ft        { grid-template-columns:1fr 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 640px)
+    ══════════════════════════════════════════════════ */
+    @media(max-width:640px) {
+
+      /* — Show sticky bottom bar — */
+      .mob-bar { display:block; }
+
+      /* — Extra bottom padding so content isn't behind bar — */
+      footer { padding-bottom:calc(90px + env(safe-area-inset-bottom)); }
+
+      /* — Global — */
+      section { padding:52px 0; }
+      .wrap   { width:93%; }
+      .ssub   { font-size:.92rem; line-height:1.65; }
+      .lbl    { font-size:.68rem; }
+
+      /* — Nav pill — */
+      .navpill {
+        top:8px;
+        width:94%;
+        min-height:48px;
+        border-radius:12px;
+        padding:0 .85rem;
+      }
+      .navpill > a.btn { display:none; }
+      .nav-logo img { width:30px; height:30px; }
+      .nav-logo-text { font-size:1rem; }
+
+      /* — Burger — */
+      .bbtn { display:flex; z-index:1001; position:relative; background:none; border:none; cursor:pointer; }
+
+      /* — Hide desktop nav, show burger — */
+      .nav-links-desktop { display:none !important; }
+
+      /* — Full-screen menu overlay (direct child of header, NOT navpill) — */
+      .nav-links-mobile {
+        display:flex;
+        position:fixed;
+        inset:0;
+        width:100%; height:100%;
+        background:rgba(6,6,6,.98);
+        backdrop-filter:blur(28px);
+        -webkit-backdrop-filter:blur(28px);
+        flex-direction:column;
+        justify-content:center;
+        align-items:stretch;
+        gap:0;
+        border:none;
+        list-style:none;
+        padding:0 0 calc(80px + env(safe-area-inset-bottom));
+        z-index:1000;
+        /* hidden state */
+        transform:translateX(100%);
+        opacity:0;
+        transition:transform .32s var(--ease), opacity .32s var(--ease);
+        pointer-events:none;
+      }
+      .nav-links-mobile.open {
+        transform:translateX(0);
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      /* Burger animation when open */
+      .bbtn.open span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+      .bbtn.open span:nth-child(2) { opacity:0; width:0; }
+      .bbtn.open span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
+
+      .nav-links-mobile li {
+        width:100%;
+        border-bottom:1px solid var(--b1);
+      }
+      .nav-links-mobile li:first-child { border-top:1px solid rgba(255,255,255,.06); margin-top:64px; }
+      .nav-links-mobile a {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        font-size:1.1rem;
+        font-weight:600;
+        padding:1.05em 1.4em;
+        color:rgba(255,255,255,.75);
+        border-radius:0;
+        letter-spacing:.03em;
+        text-decoration:none;
+      }
+      .nav-links-mobile a::after { content:'→'; color:var(--g3); font-size:.9em; }
+      .nav-links-mobile a:hover, .nav-links-mobile a:active { color:#fff; background:var(--s1); }
+
+      /* — Hero — */
+      #hero { min-height:100svh; padding-top:68px; padding-bottom:16px; align-items:flex-start; }
+      h1.hh {
+        font-size:clamp(2.05rem,9vw,3rem);
+        margin-bottom:1rem;
+        line-height:1.14;
+        overflow-wrap:break-word;
+        word-break:break-word;
+      }
+      .hdesc { font-size:.92rem; margin-bottom:1.5rem; max-width:100%; line-height:1.68; }
+      .hero-tag { font-size:.66rem; margin-bottom:.9rem; padding:5px 12px; }
+
+      /* Hero buttons — full width column */
+      .hbtns { flex-direction:column; gap:.65rem; }
+      .hbtns .btn {
+        width:100%;
+        justify-content:center;
+        padding:.92em 1.2em;
+        font-size:.92rem;
+        border-radius:11px;
+      }
+
+      /* Stats — 3 in a row, airier */
+      .hstats {
+        gap:0;
+        margin-top:2.4rem;
+        padding-top:1.7rem;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+      }
+      .hstats > div {
+        padding:0 .6rem;
+        border-right:1px solid var(--b1);
+      }
+      .hstats > div:first-child { padding-left:0; }
+      .hstats > div:last-child { border-right:none; }
+      .stat-n { font-size:1.6rem; }
+      .stat-n sup { font-size:.5em; }
+      .stat-l { font-size:.7rem; margin-top:5px; }
+
+      /* — About — */
+      .about-lay { gap:2rem; }
+      .avis { display:none; }
+      .alist { gap:.6rem; margin-top:1rem; }
+      .aitem {
+        padding:.9rem;
+        border-radius:11px;
+        gap:.8rem;
+      }
+      .aico { width:36px; height:36px; border-radius:8px; flex-shrink:0; }
+      .aitem-t { font-size:.9rem; }
+      .aitem-d { font-size:.82rem; }
+
+      /* Contact info card */
+      .ccard { padding:1rem 1.1rem; }
+      .crow { padding:.7rem 0; min-height:52px; font-size:.86rem; }
+      .cico { width:34px; height:34px; }
+
+      /* — Halls — horizontal swipe cards — */
+      .halls-top {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:.9rem;
+        margin-bottom:1.5rem;
+      }
+      .halls-grid {
+        display:flex;
+        gap:.75rem;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        -webkit-overflow-scrolling:touch;
+        padding-bottom:4px;
+        scrollbar-width:none;
+        /* Extend slightly beyond wrap to show peek of next card */
+        margin-right:-4%;
+        padding-right:4%;
+      }
+      .halls-grid::-webkit-scrollbar { display:none; }
+      .hcard2 {
+        flex:0 0 75vw;
+        max-width:270px;
+        scroll-snap-align:start;
+        transform:none !important;
+        border-radius:16px;
+      }
+      .h2-ico { width:42px; height:42px; border-radius:10px; }
+      .h2-name { font-size:.95rem; }
+      .h2-desc { font-size:.81rem; }
+      /* Scroll hint dots */
+      .halls-dots {
+        display:flex;
+        gap:5px;
+        justify-content:center;
+        margin-top:.9rem;
+      }
+      .halls-dots span {
+        width:5px; height:5px;
+        border-radius:50%;
+        background:var(--b2);
+        transition:background .2s;
+      }
+      .halls-dots span.active { background:#fff; width:14px; border-radius:3px; }
+
+      /* — Services — 2-column grid — */
+      .svc-grid {
+        grid-template-columns:repeat(2,1fr);
+        margin-top:1.8rem;
+        gap:1px;
+      }
+      .svc { padding:1.4rem 1.1rem; gap:.7rem; }
+      .svc-ico { width:40px; height:40px; border-radius:9px; }
+      .svc-ico svg { width:18px; height:18px; }
+      .svc-t { font-size:.88rem; }
+      .svc-d { font-size:.78rem; line-height:1.5; }
+      /* Hide arrow on mobile */
+      .svc-arr { display:none; }
+      /* Last card spans full width on mobile (odd one out) */
+      .svc:last-child { grid-column:span 2; }
+
+      /* — Gallery — 2×3 grid mobile — */
+      .gal-head { margin-bottom:1.8rem; text-align:left; }
+      .gal-head .lbl { justify-content:flex-start; }
+      .gal-head .ssub { text-align:left; margin:0; }
+      .gal-grid {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:160px 160px 130px;
+        gap:.65rem;
+      }
+      /* сбрасываем инлайн grid-column/grid-row — на мобильном 2 колонки */
+      .gal-grid .gi {
+        grid-column:unset !important;
+        grid-row:unset !important;
+      }
+      /* первый элемент — большой, занимает 2 строки слева */
+      .gal-grid .gi:first-child {
+        grid-column:1;
+        grid-row:span 2;
+      }
+      .gi { border-radius:12px; }
+      .gi-icon { width:34px; height:34px; }
+      .gi-cap { font-size:.66rem; }
+
+      /* — Contact — */
+      .ct-lay { gap:1.8rem; }
+      .ct-left .note { font-size:.8rem; margin-top:1.1rem; }
+      .ct-btns { gap:.7rem; }
+      .ct-btn {
+        padding:.95rem 1.1rem;
+        border-radius:12px;
+        min-height:60px;
+        gap:.85rem;
+      }
+      .ct-btn-ico { width:40px; height:40px; border-radius:9px; }
+      .ct-btn-val { font-size:.86rem; }
+      .ct-btn-label { font-size:.67rem; }
+
+      /* — Footer — */
+      .ft {
+        grid-template-columns:1fr;
+        gap:1.8rem;
+        margin-bottom:1.8rem;
+        padding-bottom:1.8rem;
+      }
+      .fdesc { max-width:100%; font-size:.83rem; }
+      .flinks { flex-direction:row; flex-wrap:wrap; gap:.4rem .9rem; }
+      .flinks a { font-size:.83rem; }
+      .soclinks { flex-direction:row; flex-wrap:wrap; gap:.5rem; }
+      .socl { font-size:.78rem; padding:.4em .65em; }
+      .fb2 { flex-direction:column; gap:.3rem; text-align:center; }
+      .fcopy { font-size:.72rem; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE — SMALL PHONES (≤ 390px)
+    ══════════════════════════════════════════════════ */
+    @media(max-width:390px) {
+      h1.hh { font-size:2.05rem; }
+      .navpill { height:46px; }
+      .svc-grid { grid-template-columns:1fr; }
+      .svc:last-child { grid-column:span 1; }
+      .gal-grid {
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:140px 110px 110px;
+      }
+      .ct-btn { padding:.85rem .9rem; }
+      .mb-btn { font-size:.63rem; min-height:52px; }
+    }
+
+    /* ══ PRICE TABS ══ */
+    .ptabs {
+      display:flex; gap:.6rem; margin-top:2.5rem;
+      overflow-x:auto; scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:2px; scrollbar-width:none;
+    }
+    .ptabs::-webkit-scrollbar { display:none; }
+    .ptab {
+      flex:1; min-width:150px; scroll-snap-align:start;
+      display:flex; flex-direction:column; align-items:flex-start; gap:.3rem;
+      padding:1.1rem 1.3rem;
+      background:var(--s1); border:1px solid var(--b1); border-radius:16px;
+      color:var(--g1); cursor:pointer; transition:all var(--t) var(--ease);
+      text-align:left; font-family:var(--fb);
+    }
+    .ptab svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.6; flex-shrink:0; transition:opacity var(--t); }
+    .ptab span { font-family:var(--fh); font-size:.95rem; font-weight:700; color:#fff; }
+    .ptab em { font-style:normal; font-size:.72rem; color:var(--g2); letter-spacing:.04em; }
+    .ptab:hover { background:var(--s2); border-color:var(--b2); color:#fff; }
+    .ptab:hover svg { opacity:1; }
+    .ptab.active {
+      background:#fff; border-color:transparent;
+      color:#080808;
+      box-shadow:0 0 32px rgba(255,255,255,.12), 0 4px 20px rgba(0,0,0,.4);
+    }
+    .ptab.active svg { stroke:#080808; opacity:.7; }
+    .ptab.active span { color:#080808; }
+    .ptab.active em { color:rgba(0,0,0,.45); }
+
+    .ppanels { margin-top:1rem; }
+    .ppanel { display:none; }
+    .ppanel.active { display:block; animation:pfadeIn .25s ease; }
+    @keyframes pfadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+    .ppanel-cols {
+      display:grid; grid-template-columns:1fr 1fr; gap:1px;
+      background:var(--b1); border:1px solid var(--b1); border-radius:18px; overflow:hidden;
+    }
+    .ppanel-col { background:var(--s1); padding:1.8rem 2rem; }
+    .ppanel-col-head {
+      display:flex; align-items:center; gap:.6rem;
+      font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:rgba(255,255,255,.55); margin-bottom:1.2rem; padding-bottom:.9rem;
+      border-bottom:1px solid var(--b1);
+    }
+    .ppanel-col-head.night { color:rgba(160,180,255,.6); }
+    .ppanel-col-head svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; flex-shrink:0; }
+
+    .prow {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:.65rem 0; border-bottom:1px solid rgba(255,255,255,.04);
+      font-size:.9rem; color:var(--g1);
+    }
+    .prow:last-child { border-bottom:none; }
+    .prow small { font-size:.7rem; color:var(--g2); margin-left:.3rem; }
+    .pval { font-family:var(--fh); font-weight:700; color:#fff; font-size:.95rem; }
+    .prow-hl { background:rgba(255,255,255,.03); margin:0 -2rem; padding:.65rem 2rem; border-radius:0; border-bottom:none; margin-top:.4rem; }
+    .pval-hl { color:#fbbf24; }
+
+    .ppanel-note {
+      margin-top:.8rem; padding:.75rem 1.2rem;
+      background:var(--s1); border:1px solid var(--b1); border-radius:12px;
+      font-size:.78rem; color:var(--g2); text-align:center; letter-spacing:.03em;
+    }
+
+    @media(max-width:1000px) {
+      .ptab { min-width:130px; }
+    }
+    @media(max-width:640px) {
+      .ptabs { gap:.5rem; }
+      .ptab { min-width:110px; padding:.85rem 1rem; border-radius:14px; }
+      .ptab span { font-size:.85rem; }
+      .ptab em { font-size:.68rem; }
+      .ptab svg { width:18px; height:18px; }
+      .ppanel-cols { grid-template-columns:1fr; gap:1px; }
+      .ppanel-col { padding:1.3rem 1.2rem; }
+      .prow-hl { margin:0 -1.2rem; padding:.65rem 1.2rem; }
+      .ppanel-note { font-size:.74rem; }
+    }
+
+    /* ══ LIGHTBOX ══ */
+    #lightbox {
+      display:none; position:fixed; inset:0; z-index:2000;
+      background:rgba(0,0,0,.92); backdrop-filter:blur(10px);
+      align-items:center; justify-content:center;
+      cursor:zoom-out;
+    }
+    #lightbox.open { display:flex; }
+    #lightbox img {
+      max-width:92vw; max-height:88vh;
+      border-radius:12px; object-fit:contain;
+      box-shadow:0 0 80px rgba(0,0,0,.8);
+      pointer-events:none;
+    }
+    #lightbox-close {
+      position:absolute; top:20px; right:24px;
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+      color:#fff; font-size:1.3rem; line-height:40px; text-align:center;
+      cursor:pointer; transition:background .2s;
+    }
+    #lightbox-close:hover { background:rgba(255,255,255,.2); }
+
+    /* ══ SCROLL TO TOP ══ */
+    #backTop {
+      position:fixed; bottom:90px; right:20px; z-index:900;
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(20,20,20,.85); border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(12px);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; opacity:0; pointer-events:none;
+      transform:translateY(12px);
+      transition:opacity .3s, transform .3s;
+      box-shadow:0 4px 20px rgba(0,0,0,.5);
+    }
+    #backTop.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+    #backTop:hover { background:rgba(40,40,40,.95); border-color:rgba(255,255,255,.3); }
+    #backTop svg { width:18px; height:18px; stroke:#fff; stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    @media(max-width:640px) { #backTop { bottom:calc(90px + env(safe-area-inset-bottom)); right:14px; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div id="glow" aria-hidden="true"></div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header id="siteHeader">
+  <div class="navpill" id="navpill">
+
+    <!-- Лого: картинка + текст -->
+    <a href="#hero" class="nav-logo" onclick="closeMenu()">
+      <img src="logo.jpg" alt="TOPMAIN лого" />
+      <span class="nav-logo-text">TOP<span>MAIN</span></span>
+    </a>
+
+    <!-- Бургер (desktop hidden, mobile visible) -->
+    <button class="bbtn" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Десктоп навигация (inline) -->
+    <ul class="nav-links-desktop" role="navigation">
+      <li><a href="#about">О клубе</a></li>
+      <li><a href="#specs">Залы</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="menu.html">Меню</a></li>
+      <li class="hide-md"><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+
+    <a href="#contact" class="btn btn-w" style="font-size:.78rem;padding:.5em 1.15em;">Связаться →</a>
+  </div>
+
+  <!-- Мобильное меню — вне navpill чтобы избежать backdrop-filter containment -->
+  <ul class="nav-links-mobile" id="mobileMenu" role="navigation" aria-hidden="true">
+    <li><a href="#about"   onclick="closeMenu()">О клубе</a></li>
+    <li><a href="#specs"   onclick="closeMenu()">Залы</a></li>
+    <li><a href="#pricing" onclick="closeMenu()">Цены</a></li>
+    <li><a href="menu.html">Меню</a></li>
+    <li><a href="#faq"     onclick="closeMenu()">FAQ</a></li>
+    <li><a href="#contact"  onclick="closeMenu()">Контакты</a></li>
+  </ul>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="lv" style="left:5%"></div>
+  <div class="lv" style="left:95%"></div>
+  <div class="hero-wm" aria-hidden="true">TOP</div>
+
+  <div class="wrap">
+    <div class="hero-lay">
+      <div>
+        <div class="hero-tag rv">Уфа · Работаем 24/7</div>
+        <h1 class="hh rv d1">TOPMAIN<br/><span class="out">Кибер лаунж</span><br/>Комфорт Класса</h1>
+        <p class="hdesc rv d2">Кибер лаунж комфорт класса в центре Уфы. Буткемп, Дуо, Соло и PS5 залы. Бар с едой из&nbsp;«Су&nbsp;Мо» и «Касабланка». Без перерывов и выходных.</p>
+        <div class="hbtns rv d3">
+          <a href="https://t.me/topmainufa" target="_blank" rel="noopener" class="btn btn-w">
+            <!-- Telegram icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.04 13.617l-2.955-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.942h.27z"/></svg>
+            Написать в Telegram
+          </a>
+          <a href="#pricing" class="btn btn-g">Выбрать зал</a>
+        </div>
+        <div class="hstats rv d4">
+          <div><div class="stat-n">5<sup>залов</sup></div><div class="stat-l">На выбор</div></div>
+          <div><div class="stat-n">24<sup>/7</sup></div><div class="stat-l">Без выходных</div></div>
+          <div><div class="stat-n">PS5<sup>+PC</sup></div><div class="stat-l">Платформы</div></div>
+        </div>
+      </div>
+
+      <!-- Right card -->
+      <div class="hcard rv d2" id="heroCard">
+        <div class="hcard-inner" id="heroCardInner">
+          <div class="hcard-main glass">
+            <div class="hcard-bg">
+              <div class="hcard-logo-wrap">
+                <img src="logo.jpg" alt="TOPMAIN" />
+                <span>TOPMAIN</span>
+              </div>
+            </div>
+          </div>
+          <div class="hspecs">
+            <div class="hspec" data-depth="38">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M7 7V5M12 7V5M17 7V5M7 17v2M12 17v2M17 17v2"/></svg>
+              RTX 5070
+            </div>
+            <div class="hspec" data-depth="54">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              240 Гц
+            </div>
+            <div class="hspec" data-depth="70">
+              <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M6 8V5M10 8V5M14 8V5M18 8V5M6 16v3M10 16v3M14 16v3M18 16v3"/></svg>
+              DDR5 32 GB
+            </div>
+          </div>
+          <div class="haddr" data-depth="46"><strong>TOPMAIN · Уфа</strong>ул. Коммунистическая, 50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-lay">
+      <div>
+        <div class="rv">
+          <span class="lbl">О клубе</span>
+          <h2 class="st">Больше чем <em>просто</em> клуб</h2>
+          <p class="ssub">TOPMAIN — Кибер лаунж комфорт класса. Мы создали пространство, где всё продумано: от кресла до интернета.</p>
+        </div>
+        <ul class="alist">
+          <li class="aitem rv d1">
+            <span class="aico">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </span>
+            <div><div class="aitem-t">Топовое железо</div><div class="aitem-d">Мощные ПК с высокочастотными видеокартами, 144–240 Гц мониторы, механические клавиатуры и игровые мыши.</div></div>
+          </li>
+          <li class="aitem rv d2">
+            <span class="aico">
+              <svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="10" rx="1"/><path d="M10 11V7a2 2 0 1 1 4 0v4"/><circle cx="12" cy="16" r="1" fill="#fff" stroke="none"/></svg>
+            </span>
+            <div><div class="aitem-t">5 видов зала</div><div class="aitem-d">Главный зал, Буткемп для команды, Duo для двоих, Solo для фокуса и PS5-залы — каждый под своё настроение.</div></div>
+          </li>
+          <li class="aitem rv d3">
+            <span class="aico">
+              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </span>
+            <div><div class="aitem-t">Бар с едой</div><div class="aitem-d">Полноценное меню из Су Мо и Касабланка — еда и напитки прямо на место без отрыва от игры.</div></div>
+          </li>
+          <li class="aitem rv d4">
+            <span class="aico">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <div><div class="aitem-t">24/7 без перерывов</div><div class="aitem-d">Клуб работает круглосуточно каждый день — приходи когда удобно, без ограничений.</div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-r rv d2">
+        <div class="avis">
+          <div class="avis-inner">
+            <img src="neon.JPG" alt="TOPMAIN — неоновый логотип в клубе" class="avis-photo" />
+            <div class="avis-overlay"></div>
+          </div>
+        </div>
+        <div class="glass ccard">
+          <div class="crow">
+            <span class="cico"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>Уфа, ул. Коммунистическая, 50</span>
+          </div>
+          <div class="crow">
+            <span class="cico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.23 19.79 19.79 0 0 1 1.61 2.6 2 2 0 0 1 3.6.42h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 15.44z"/></svg></span>
+            <a href="tel:+79297541411">+7 (929) 754-14-11</a>
+          </div>
+          <div class="crow">
+            <span class="cico"><svg viewBox="0 0 24 24" fill="#fff" stroke="none" style="opacity:.65"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.04 13.617l-2.955-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.942z"/></svg></span>
+            <a href="https://t.me/topmainufa" target="_blank" rel="noopener">t.me/topmainufa</a>
+          </div>
+          <div class="crow">
+            <span class="cico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <span>Ежедневно · 24 / 7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ SPECS ══════════ -->
+<section id="specs" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="rv" style="text-align:center;margin-bottom:3rem;">
+      <span class="lbl" style="justify-content:center;">Характеристики</span>
+      <h2 class="st" style="text-align:center;">Железо <em>топ-уровня</em></h2>
+      <p class="ssub" style="margin:0 auto;text-align:center;">Реальные характеристики каждого зала</p>
+    </div>
+    <div class="specs-grid">
+
+      <!-- MAIN ROOM -->
+      <div class="sc rv d1">
+        <div class="sc-bg sc-bg-main"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">MAIN<br/>ROOM</div>
+            <div class="sc-count">15 мощных PC</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Железо</div>
+              <div class="sc-row"><span class="sc-ico sc-cpu"></span>AMD Ryzen 7 7800X3D</div>
+              <div class="sc-row"><span class="sc-ico sc-gpu"></span>GeForce RTX 5060Ti</div>
+              <div class="sc-row"><span class="sc-ico sc-ram"></span>DDR5 32 GB</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Периферия</div>
+              <div class="sc-row"><span class="sc-ico sc-mon"></span>Samsung Odyssey G4 240 Гц</div>
+              <div class="sc-row"><span class="sc-ico sc-kb"></span>AJAZZ AK820</div>
+              <div class="sc-row"><span class="sc-ico sc-ms"></span>LAMZU Thorn Wireless</div>
+              <div class="sc-row"><span class="sc-ico sc-hp"></span>Дарк Проджект HS6</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+      <!-- BOOT CAMP -->
+      <div class="sc rv d2">
+        <div class="sc-bg sc-bg-boot"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">BOOT<br/>CAMP</div>
+            <div class="sc-count">3 буткемп комнаты</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Железо</div>
+              <div class="sc-row"><span class="sc-ico sc-cpu"></span>Ryzen 7 7800 X3D</div>
+              <div class="sc-row"><span class="sc-ico sc-gpu"></span>GeForce RTX 5070</div>
+              <div class="sc-row"><span class="sc-ico sc-ram"></span>DDR5 32 GB</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Периферия</div>
+              <div class="sc-row"><span class="sc-ico sc-mon"></span>ASUS ROG Strix 380 Гц</div>
+              <div class="sc-row"><span class="sc-ico sc-kb"></span>AJAZZ AK820 MAX</div>
+              <div class="sc-row"><span class="sc-ico sc-ms"></span>LAMZU Thorn Wireless</div>
+              <div class="sc-row"><span class="sc-ico sc-hp"></span>Дарк Проджект HS6</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+      <!-- DUO ROOM -->
+      <div class="sc rv d3">
+        <div class="sc-bg sc-bg-duo"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">DUO<br/>ROOM</div>
+            <div class="sc-count">4 дуо комнаты</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Железо</div>
+              <div class="sc-row"><span class="sc-ico sc-cpu"></span>Ryzen 7 7800 X3D</div>
+              <div class="sc-row"><span class="sc-ico sc-gpu"></span>GeForce RTX 5070</div>
+              <div class="sc-row"><span class="sc-ico sc-ram"></span>DDR5 32 GB</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Периферия</div>
+              <div class="sc-row"><span class="sc-ico sc-mon"></span>ASUS ROG Strix 380 Гц</div>
+              <div class="sc-row"><span class="sc-ico sc-kb"></span>AJAZZ AK820 MAX</div>
+              <div class="sc-row"><span class="sc-ico sc-ms"></span>LAMZU Thorn Wireless</div>
+              <div class="sc-row"><span class="sc-ico sc-hp"></span>Дарк Проджект HS6</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+      <!-- SOLO ROOM -->
+      <div class="sc rv d1">
+        <div class="sc-bg sc-bg-solo"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">SOLO<br/>ROOM</div>
+            <div class="sc-count">2 соло комнаты</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Железо</div>
+              <div class="sc-row"><span class="sc-ico sc-cpu"></span>Ryzen 7 7800 X3D</div>
+              <div class="sc-row"><span class="sc-ico sc-gpu"></span>GeForce RTX 5070</div>
+              <div class="sc-row"><span class="sc-ico sc-ram"></span>DDR5 32 GB</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Периферия</div>
+              <div class="sc-row"><span class="sc-ico sc-mon"></span>ASUS ROG Strix 380 + 180 Гц</div>
+              <div class="sc-row"><span class="sc-ico sc-kb"></span>AJAZZ AK820 MAX</div>
+              <div class="sc-row"><span class="sc-ico sc-ms"></span>LAMZU Thorn Wireless</div>
+              <div class="sc-row"><span class="sc-ico sc-hp"></span>Дарк Проджект HS5 Wireless V2</div>
+              <div class="sc-row"><span class="sc-ico sc-cam"></span>Logitech Full HD StreamCam</div>
+              <div class="sc-row"><span class="sc-ico sc-mic"></span>Fifine AM8T</div>
+              <div class="sc-row"><span class="sc-ico sc-tv"></span>TV zone 55'</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+      <!-- PS5 ROOM -->
+      <div class="sc rv d2">
+        <div class="sc-bg sc-bg-ps5"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">PS5<br/>ROOM</div>
+            <div class="sc-count">3 комнаты с PS5</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Комплектация</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>Playstation 5</div>
+              <div class="sc-row"><span class="sc-ico sc-tv"></span>TV 75’ · 120Hz</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Игры</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>EA Sports FC 25</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>UFC 5</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>Mortal Kombat 1</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>Gran Turismo 7</div>
+              <div class="sc-row"><span class="sc-ico sc-ctrl"></span>God of War</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+      <!-- BAR -->
+      <div class="sc rv d3">
+        <div class="sc-bg sc-bg-bar"></div>
+        <div class="sc-overlay"></div>
+        <div class="sc-content">
+          <div class="sc-header">
+            <div class="sc-title">BAR &amp;<br/>FOOD</div>
+            <div class="sc-count">Су Мо и Касабланка</div>
+          </div>
+          <div class="sc-sections">
+            <div class="sc-sec">
+              <div class="sc-sec-t">Меню</div>
+              <div class="sc-row"><span class="sc-ico sc-food"></span>Бургеры и горячие блюда</div>
+              <div class="sc-row"><span class="sc-ico sc-food"></span>Суши, роллы, том ям</div>
+              <div class="sc-row"><span class="sc-ico sc-food"></span>Сэндвичи и закуски</div>
+              <div class="sc-row"><span class="sc-ico sc-drink"></span>Энергетики и лимонады</div>
+            </div>
+            <div class="sc-sec">
+              <div class="sc-sec-t">Доставка</div>
+              <div class="sc-row"><span class="sc-ico sc-mon"></span>Прямо на твоё место</div>
+              <div class="sc-row"><span class="sc-ico sc-tv"></span>За 15–20 мин до игрового места</div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-logo"><img src="logo.jpg" alt="TOPMAIN"/></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <span class="lbl" style="justify-content:center">Цены</span>
+      <h2 class="st" style="text-align:center">Тарифы <em>и пакеты</em></h2>
+      <p class="ssub" style="margin:0 auto;text-align:center">Выбери зал — цены появятся сразу</p>
+    </div>
+
+    <!-- TAB BAR -->
+    <div class="ptabs rv">
+      <button class="ptab active" data-tab="main" onclick="switchPriceTab(this,'main')">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>Main Room</span>
+        <em>от 150 ₽/ч</em>
+      </button>
+      <button class="ptab" data-tab="boot" onclick="switchPriceTab(this,'boot')">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Boot Camp</span>
+        <em>от 200 ₽/ч</em>
+      </button>
+      <button class="ptab" data-tab="duo" onclick="switchPriceTab(this,'duo')">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Duo Room</span>
+        <em>от 240 ₽/ч</em>
+      </button>
+      <button class="ptab" data-tab="solo" onclick="switchPriceTab(this,'solo')">
+        <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg>
+        <span>Solo Room</span>
+        <em>от 320 ₽/ч</em>
+      </button>
+      <button class="ptab" data-tab="ps5" onclick="switchPriceTab(this,'ps5')">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 9v6M11 12h-6"/></svg>
+        <span>PS5 Room</span>
+        <em>от 400 ₽/ч</em>
+      </button>
+    </div>
+
+    <!-- PANELS -->
+    <div class="ppanels">
+
+      <!-- MAIN ROOM -->
+      <div class="ppanel active" id="ptab-main">
+        <div class="ppanel-cols">
+          <div class="ppanel-col">
+            <div class="ppanel-col-head">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              День · 10:00 – 18:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">150 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">400 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">650 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет день</span><span class="pval pval-hl">800 ₽</span></div>
+          </div>
+          <div class="ppanel-col">
+            <div class="ppanel-col-head night">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Вечер/ночь · 18:00 – 10:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">230 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">600 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 000 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет ночь <small>22:00–10:00</small></span><span class="pval pval-hl">1 200 ₽</span></div>
+          </div>
+        </div>
+        <div class="ppanel-note">15 мощных PC · AMD Ryzen 7 7800X3D · RTX 5060Ti · 240 Гц</div>
+      </div>
+
+      <!-- BOOT CAMP -->
+      <div class="ppanel" id="ptab-boot">
+        <div class="ppanel-cols">
+          <div class="ppanel-col">
+            <div class="ppanel-col-head">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              День · 10:00 – 18:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">200 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">520 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">800 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет день</span><span class="pval pval-hl">900 ₽</span></div>
+          </div>
+          <div class="ppanel-col">
+            <div class="ppanel-col-head night">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Вечер/ночь · 18:00 – 10:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">280 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">750 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 150 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет ночь <small>22:00–10:00</small></span><span class="pval pval-hl">1 400 ₽</span></div>
+          </div>
+        </div>
+        <div class="ppanel-note">3 буткемп-комнаты · Ryzen 7 7800X3D · RTX 5070 · 380 Гц · LAN-сеть</div>
+      </div>
+
+      <!-- DUO ROOM -->
+      <div class="ppanel" id="ptab-duo">
+        <div class="ppanel-cols">
+          <div class="ppanel-col">
+            <div class="ppanel-col-head">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              День · 10:00 – 18:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">240 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">650 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">950 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет день</span><span class="pval pval-hl">1 050 ₽</span></div>
+          </div>
+          <div class="ppanel-col">
+            <div class="ppanel-col-head night">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Вечер/ночь · 18:00 – 10:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">320 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">820 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 250 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет ночь <small>22:00–10:00</small></span><span class="pval pval-hl">1 600 ₽</span></div>
+          </div>
+        </div>
+        <div class="ppanel-note">4 дуо-комнаты · Ryzen 7 7800X3D · RTX 5070 · 380 Гц · для двоих</div>
+      </div>
+
+      <!-- SOLO ROOM -->
+      <div class="ppanel" id="ptab-solo">
+        <div class="ppanel-cols">
+          <div class="ppanel-col">
+            <div class="ppanel-col-head">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              День · 10:00 – 18:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">320 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">800 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 200 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет день</span><span class="pval pval-hl">1 900 ₽</span></div>
+          </div>
+          <div class="ppanel-col">
+            <div class="ppanel-col-head night">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Вечер/ночь · 18:00 – 10:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">400 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">1 000 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 600 ₽</span></div>
+            <div class="prow prow-hl"><span>Пакет ночь <small>22:00–10:00</small></span><span class="pval pval-hl">2 300 ₽</span></div>
+          </div>
+        </div>
+        <div class="ppanel-note">2 соло-комнаты · RTX 5070 · 380 Гц · камера · микрофон · стримерский сетап</div>
+      </div>
+
+      <!-- PS5 ROOM -->
+      <div class="ppanel" id="ptab-ps5">
+        <div class="ppanel-cols">
+          <div class="ppanel-col">
+            <div class="ppanel-col-head">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              День · 10:00 – 18:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">400 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">1 100 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 600 ₽</span></div>
+          </div>
+          <div class="ppanel-col">
+            <div class="ppanel-col-head night">
+              <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Вечер/ночь · 18:00 – 10:00
+            </div>
+            <div class="prow"><span>1 час</span><span class="pval">600 ₽</span></div>
+            <div class="prow"><span>3 часа</span><span class="pval">1 400 ₽</span></div>
+            <div class="prow"><span>5 часов</span><span class="pval">1 800 ₽</span></div>
+          </div>
+        </div>
+        <div class="ppanel-note">3 комнаты · PlayStation 5 · TV 75" · 120 Гц · DualSense</div>
+      </div>
+
+    </div><!-- /ppanels -->
+
+    <div class="pa-list" style="display:none">
+
+      <!-- MAIN ROOM -->
+      <div class="pa-item rv d1 open">
+        <div class="pa-head" onclick="togglePrice(this)">
+          <div class="pa-head-l">
+            <span class="pa-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <div>
+              <div class="pa-name">Main Room</div>
+              <div class="pa-sub">15 PC · от 150 ₽/ч</div>
+            </div>
+          </div>
+          <span class="pa-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="pa-body">
+          <div class="pa-cols">
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> День · 10:00–18:00</div>
+              <div class="pa-r"><span>1 час</span><span>150 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>400 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>650 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Пакет день</span><span>800 ₽</span></div>
+            </div>
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Вечер/ночь · 18:00–10:00</div>
+              <div class="pa-r"><span>1 час</span><span>230 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>600 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 000 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Пакет ночь <small>22:00–10:00</small></span><span>1 200 ₽</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOOT CAMP -->
+      <div class="pa-item rv d2">
+        <div class="pa-head" onclick="togglePrice(this)">
+          <div class="pa-head-l">
+            <span class="pa-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div>
+              <div class="pa-name">Boot Camp</div>
+              <div class="pa-sub">3 комнаты · от 200 ₽/ч</div>
+            </div>
+          </div>
+          <span class="pa-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="pa-body">
+          <div class="pa-cols">
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> День · 10:00–18:00</div>
+              <div class="pa-r"><span>1 час</span><span>200 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>520 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>800 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Пакет день</span><span>900 ₽</span></div>
+            </div>
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Вечер/ночь · 18:00–10:00</div>
+              <div class="pa-r"><span>1 час</span><span>280 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>750 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 150 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Пакет ночь <small>22:00–10:00</small></span><span>1 400 ₽</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLO ROOM -->
+      <div class="pa-item rv d3">
+        <div class="pa-head" onclick="togglePrice(this)">
+          <div class="pa-head-l">
+            <span class="pa-icon"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg></span>
+            <div>
+              <div class="pa-name">Solo Room</div>
+              <div class="pa-sub">2 комнаты · от 320 ₽/ч</div>
+            </div>
+          </div>
+          <span class="pa-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="pa-body">
+          <div class="pa-cols">
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> День · 10:00–18:00</div>
+              <div class="pa-r"><span>1 час</span><span>320 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>800 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 200 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> Пакет день</span><span>1 900 ₽</span></div>
+            </div>
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Вечер/ночь · 18:00–10:00</div>
+              <div class="pa-r"><span>1 час</span><span>400 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>1 000 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 600 ₽</span></div>
+              <div class="pa-r pa-hl"><span style="display:flex;align-items:center;gap:.4rem"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Пакет ночь <small>22:00–10:00</small></span><span>2 300 ₽</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS5 ROOM -->
+      <div class="pa-item rv d1">
+        <div class="pa-head" onclick="togglePrice(this)">
+          <div class="pa-head-l">
+            <span class="pa-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 9v6M11 12h-6"/><circle cx="17" cy="11" r=".8" fill="#fff" stroke="none"/><circle cx="19" cy="13" r=".8" fill="#fff" stroke="none"/></svg></span>
+            <div>
+              <div class="pa-name">PS5 Room</div>
+              <div class="pa-sub">3 комнаты · от 400 ₽/ч</div>
+            </div>
+          </div>
+          <span class="pa-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="pa-body">
+          <div class="pa-cols">
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> День · 10:00–18:00</div>
+              <div class="pa-r"><span>1 час</span><span>400 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>1 100 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 600 ₽</span></div>
+            </div>
+            <div class="pa-col">
+              <div class="pa-col-label"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Вечер/ночь · 18:00–10:00</div>
+              <div class="pa-r"><span>1 час</span><span>600 ₽</span></div>
+              <div class="pa-r"><span>3 часа</span><span>1 400 ₽</span></div>
+              <div class="pa-r"><span>5 часов</span><span>1 800 ₽</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PROMO -->
+    <div class="rv d2" style="text-align:center;margin-top:3.5rem;">
+      <span class="lbl" style="justify-content:center">Акции</span>
+      <h2 class="st" style="text-align:center">Специальные <em>предложения</em></h2>
+    </div>
+    <div class="promo-grid collapsed" id="promoGrid">
+
+      <!-- 1. Долгожданный четверг -->
+      <div class="promo-card rv d1">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="promo-badge">Каждый четверг</div>
+        <div class="promo-value">+1 ЧАС</div>
+        <div class="promo-title">Долгожданный четверг</div>
+        <div class="promo-desc">При покупке пакета от 3-х часов днём — получи ещё один час в подарок.</div>
+        <div class="promo-note">Акция действительна каждый четверг с 10:00 до 18:00</div>
+      </div>
+
+      <!-- 2. Приведи друга -->
+      <div class="promo-card rv d2">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="promo-badge">Приведи друга</div>
+        <div class="promo-value">+1 ЧАС</div>
+        <div class="promo-title">Тебе и твоему другу</div>
+        <div class="promo-desc">Если друг ещё не был в нашем клубе — зови его к нам и оба получите +1 час к выбранному пакету.</div>
+        <div class="promo-note">*Подробную информацию можно узнать у администраторов</div>
+      </div>
+
+      <!-- Комбо-обед (широкий) -->
+      <div class="promo-card feature rv d1">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="promo-badge">Будни · 12:00–16:00</div>
+        <div class="promo-value">+1 ЧАС НА PS5</div>
+        <div class="promo-title">Комбо-обед в подарок к игре</div>
+        <div class="promo-desc">Закажи комбо-обед — получи 1 час игры на PS5 в подарок. Действует с 12:00 до 16:00 в будние дни.</div>
+        <div class="promo-note">*Подробную информацию можно узнать у администраторов</div>
+      </div>
+
+      <!-- 3. 200 бонусов -->
+      <div class="promo-card rv d3">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="promo-badge">Оставь отзыв</div>
+        <div class="promo-value">200 бонусов</div>
+        <div class="promo-title">Поддержи нас в Яндекс Картах и 2ГИС</div>
+        <div class="promo-desc">Оставь отзыв на картах — получи 200 бонусов на счёт. Бонусы можно тратить при покупке пакета.</div>
+        <div class="promo-note">*Подробную информацию можно узнать у администраторов</div>
+      </div>
+
+      <!-- 6. Кальянная зона (нейтральное упоминание, без рекламы) -->
+      <div class="promo-card rv d3">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="promo-badge">Только для лиц 18+</div>
+        <div class="promo-title">Кальянная зона</div>
+        <div class="promo-desc">В клубе есть отдельная зона отдыха для гостей старше 18 лет.</div>
+        <div class="promo-note">Информация об условиях — у администраторов клуба</div>
+      </div>
+
+      <!-- 4. Персональная скидка (широкий) -->
+      <div class="promo-card feature rv d1">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <div class="promo-badge">Персональная скидка</div>
+        <div class="promo-value">Есть скидка в другом клубе?</div>
+        <div class="promo-title">Мы зафиксируем её за тобой</div>
+        <div class="promo-desc">Если у тебя есть персональная скидка с другого компьютерного клуба — озвучь её нашему администратору, и мы закрепим такую же скидку за тобой в нашем Кибер лаунж комфорт класса.</div>
+        <div class="promo-note">*Подробную информацию можно узнать у администраторов</div>
+      </div>
+
+      <!-- 7. Пополни баланс (narrow) -->
+      <div class="promo-card rv d1">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="promo-badge">Пополни баланс</div>
+        <div class="promo-value">500 / 1000 бонусов</div>
+        <div class="promo-title">Пополни и получи бонусы</div>
+        <div class="promo-desc">Пополни баланс на <strong style="color:#fff">3 000 ₽</strong> — получи 500 бонусов. На <strong style="color:#fff">5 000 ₽</strong> — получи 1 000 бонусов.</div>
+        <div class="promo-note">Необходимо пополнить баланс единоразово · *подробности у администраторов</div>
+      </div>
+
+      <!-- 8. О, новенький! (narrow) -->
+      <div class="promo-card rv d2">
+        <div class="promo-emoji"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+        <div class="promo-badge">Новый гость</div>
+        <div class="promo-value">500 бонусов</div>
+        <div class="promo-title">О, новенький? Держи!</div>
+        <div class="promo-desc">Приветственные 500 бонусов для новых гостей клуба. Можно потратить при покупке игрового пакета.</div>
+        <div class="promo-note">*Подробную информацию можно узнать у администраторов</div>
+      </div>
+
+
+    </div>
+    <button class="promo-more" id="promoMore" onclick="togglePromo(this)">Показать все акции</button>
+  </div>
+</section>
+
+<!-- ══════════ GALLERY ══════════ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="gal-head rv">
+      <span class="lbl">Галерея</span>
+      <h2 class="st">Загляни <em>внутрь</em></h2>
+      <p class="ssub">Атмосфера скажет сама за себя</p>
+    </div>
+    <div class="gal-grid">
+
+      <div class="gi" style="grid-column:1;grid-row:1/3">
+        <img class="gi-img" src="gaming.jpg" alt="Игровой зал · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">Игровой зал</div>
+      </div>
+
+      <div class="gi" style="grid-column:2;grid-row:1/3">
+        <img class="gi-img" src="solo.png" alt="Solo Room · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">Solo Room</div>
+      </div>
+
+      <div class="gi" style="grid-column:3;grid-row:1/3">
+        <img class="gi-img" src="ps5.png" alt="PS5 Room · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">PS5 Room</div>
+      </div>
+
+      <div class="gi" style="grid-column:1;grid-row:3">
+        <img class="gi-img" src="bootcamp.jpg" alt="Буткемп · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">Буткемп</div>
+      </div>
+
+      <div class="gi" style="grid-column:2;grid-row:3">
+        <img class="gi-img" src="bar.jpg" alt="Бар Су Мо и Касабланка · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">Бар</div>
+      </div>
+
+      <div class="gi" style="grid-column:3;grid-row:3">
+        <img class="gi-img" src="duo.jpg" alt="Дуо зона · TOPMAIN"/>
+        <div class="gi-ov"></div>
+        <div class="gi-label">Дуо зона</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT (вместо формы) ══════════ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="ct-lay">
+      <div class="ct-left rv">
+        <span class="lbl">Контакты</span>
+        <h2 class="st">Напиши нам — <em>ответим</em> быстро</h2>
+        <p class="ssub">Выбери удобный способ связи — забронируем место, ответим на вопросы или расскажем о ценах.</p>
+        <p class="note" style="display:flex;flex-direction:column;gap:.5rem"><span style="display:flex;align-items:center;gap:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Уфа, ул. Коммунистическая, 50</span><span style="display:flex;align-items:center;gap:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Работаем 24/7 без выходных</span></p>
+      </div>
+
+      <div class="ct-btns rv d2">
+        <!-- Telegram -->
+        <a href="https://t.me/topmainufa" target="_blank" rel="noopener" class="ct-btn">
+          <div class="ct-btn-ico ico-tg">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.04 13.617l-2.955-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.942z"/></svg>
+          </div>
+          <div class="ct-btn-text">
+            <div class="ct-btn-label">Telegram</div>
+            <div class="ct-btn-val">@topmainufa</div>
+          </div>
+          <div class="ct-btn-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/79297541411" target="_blank" rel="noopener" class="ct-btn">
+          <div class="ct-btn-ico ico-wa">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.845L.057 23.882l6.195-1.625A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-4.998-1.364l-.358-.213-3.718.976.99-3.626-.233-.373A9.79 9.79 0 0 1 2.182 12c0-5.415 4.403-9.818 9.818-9.818 5.415 0 9.818 4.403 9.818 9.818 0 5.415-4.403 9.818-9.818 9.818z"/></svg>
+          </div>
+          <div class="ct-btn-text">
+            <div class="ct-btn-label">WhatsApp</div>
+            <div class="ct-btn-val">+7 (929) 754-14-11</div>
+          </div>
+          <div class="ct-btn-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:+79297541411" class="ct-btn">
+          <div class="ct-btn-ico">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.23 19.79 19.79 0 0 1 1.61 2.6 2 2 0 0 1 3.6.42h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.44z"/></svg>
+          </div>
+          <div class="ct-btn-text">
+            <div class="ct-btn-label">Телефон</div>
+            <div class="ct-btn-val">+7 (929) 754-14-11</div>
+          </div>
+          <div class="ct-btn-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COUNTERS ══════════ -->
+<div class="counters-strip" id="counters">
+  <div class="wrap">
+    <div class="counters-grid">
+      <div class="cnt-item">
+        <div class="cnt-num" data-target="5000">0<sup>+</sup></div>
+        <div class="cnt-label">Гостей обслужено</div>
+      </div>
+      <div class="cnt-item">
+        <div class="cnt-num" data-target="4.9">0<sup>★</sup></div>
+        <div class="cnt-label">Рейтинг на Картах</div>
+      </div>
+      <div class="cnt-item">
+        <div class="cnt-num" data-target="27">0</div>
+        <div class="cnt-label">Залов и комнат</div>
+      </div>
+      <div class="cnt-item">
+        <div class="cnt-num">24<sup>/7</sup></div>
+        <div class="cnt-label">Без выходных</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<section id="faq">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <span class="lbl" style="justify-content:center">Вопросы</span>
+      <h2 class="st" style="text-align:center">Частые <em>вопросы</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Нужна ли регистрация?
+          <span class="faq-q-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </div>
+        <div class="faq-a">Нет, приходите просто так. Можно забронировать место заранее через Telegram или WhatsApp — напишите администратору удобное время.</div>
+      </div>
+      <div class="faq-item rv d2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Можно ли прийти со своей едой?
+          <span class="faq-q-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </div>
+        <div class="faq-a">Со своей едой приходить не нужно. У нас полное меню от «Су Мо» и «Касабланка»: бургеры, горячие блюда, суши и роллы — с доставкой за 15–20 минут прямо к вашему игровому месту. А в баре клуба всегда можно приобрести сэндвичи, снэки и прохладительные напитки.</div>
+      </div>
+      <div class="faq-item rv d1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          С какого возраста пускают в клуб?
+          <span class="faq-q-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </div>
+        <div class="faq-a">Мы принимаем посетителей от 14 лет. До 18 лет — в присутствии родителей или с их письменного разрешения.</div>
+      </div>
+      <div class="faq-item rv d2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Можно ли провести корпоратив / день рождения?
+          <span class="faq-q-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </div>
+        <div class="faq-a">Напишите нам — обсудим ваш формат и вместе придумаем, что можно организовать. Расскажите, что планируете (корпоратив, день рождения, встреча команды), сколько человек и на какую дату — подберём подходящий вариант.</div>
+      </div>
+      <div class="faq-item rv d3">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Где вы находитесь?
+          <span class="faq-q-ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </div>
+        <div class="faq-a">Уфа, ул. Коммунистическая, 50. Ориентир по карте ниже — мы прямо в центре города, добраться просто.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MAP ══════════ -->
+
+<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ MAP в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<section id="map" style="background:var(--bg2); padding-top:2rem;">
+  <div class="wrap">
+    <div class="map-wrap">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?ll=55.941048%2C54.726829&z=17&pt=55.941048%2C54.726829%2Cpm2rdm&l=map"
+        allowfullscreen="true"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="TOPMAIN на карте — Коммунистическая улица, 50"
+      ></iframe>
+      <a href="https://yandex.ru/maps/?text=%D0%A3%D1%84%D0%B0%2C+%D0%9A%D0%BE%D0%BC%D0%BC%D1%83%D0%BD%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F+%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C+50&z=17" target="_blank" rel="noopener" class="map-overlay-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Открыть на карте
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MOBILE BOTTOM BAR ══════════ -->
+<div class="mob-bar" id="mobBar" aria-label="Быстрые контакты">
+  <div class="mob-bar-inner">
+    <a href="https://t.me/topmainufa" target="_blank" rel="noopener" class="mb-btn primary" aria-label="Telegram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.04 13.617l-2.955-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.942z"/></svg>
+      Telegram
+    </a>
+    <a href="tel:+79297541411" class="mb-btn" aria-label="Позвонить">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.23 19.79 19.79 0 0 1 1.61 2.6 2 2 0 0 1 3.6.42h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.44z"/></svg>
+      Позвонить
+    </a>
+    <a href="https://wa.me/79297541411" target="_blank" rel="noopener" class="mb-btn" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.845L.057 23.882l6.195-1.625A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-4.998-1.364l-.358-.213-3.718.976.99-3.626-.233-.373A9.79 9.79 0 0 1 2.182 12c0-5.415 4.403-9.818 9.818-9.818 5.415 0 9.818 4.403 9.818 9.818 0 5.415-4.403 9.818-9.818 9.818z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ FOOTER в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <div class="flogo">
+          <img src="logo.jpg" alt="TOPMAIN"/>
+          <span class="flogo-txt">TOP<span>MAIN</span></span>
+        </div>
+        <p class="fdesc">Компьютерный клуб нового уровня в центре Уфы. Топовые ПК, PS5 и бар прямо в клубе.</p>
+      </div>
+      <div>
+        <div class="fcol-t">Навигация</div>
+        <ul class="flinks">
+          <li><a href="#about">О клубе</a></li>
+          <li><a href="#specs">Залы</a></li>
+          <li><a href="#pricing">Цены</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-t">Контакты</div>
+        <div class="soclinks">
+          <a href="https://t.me/topmainufa" target="_blank" rel="noopener" class="socl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.04 13.617l-2.955-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.942z"/></svg>
+            @topmainufa
+          </a>
+          <a href="https://wa.me/79297541411" target="_blank" rel="noopener" class="socl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.532 5.845L.057 23.882l6.195-1.625A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 0 1-4.998-1.364l-.358-.213-3.718.976.99-3.626-.233-.373A9.79 9.79 0 0 1 2.182 12c0-5.415 4.403-9.818 9.818-9.818 5.415 0 9.818 4.403 9.818 9.818 0 5.415-4.403 9.818-9.818 9.818z"/></svg>
+            +7 (929) 754-14-11
+          </a>
+          <a href="tel:+79297541411" class="socl">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.23 19.79 19.79 0 0 1 1.61 2.6 2 2 0 0 1 3.6.42h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.44z"/></svg>
+            Позвонить
+          </a>
+        </div>
+        <div style="margin-top:1.2rem;">
+          <div class="fcol-t">Адрес</div>
+          <p style="font-size:.82rem;color:var(--g1);margin-top:.4rem;">Уфа, ул. Коммунистическая, 50</p>
+          <p style="font-size:.82rem;color:var(--g2);">Ежедневно · 24 / 7</p>
+        </div>
+      </div>
+    </div>
+    <!--
+      TODO (обязательно по ст. 9–10 Закона о защите прав потребителей):
+      добавить реквизиты исполнителя. Пример строки:
+      ИП Фамилия И.О. · ОГРНИП 000000000000000 · ИНН 000000000000
+      Впишите реальные данные в блок .fcopy ниже.
+    -->
+    <div class="fb2">
+      <p class="fcopy">© 2026 TOPMAIN. Уфа, ул. Коммунистическая, 50</p>
+      <p class="fcopy">
+        <a href="privacy.html" class="fcredit">Политика конфиденциальности</a>
+        · Работаем 24/7 · <a href="https://t.me/bksqj" target="_blank" rel="noopener" class="fcredit">сайт — @bksqj</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ JS в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<script>
+  /* FAQ accordion */
+  function toggleFaq(btn){
+    const item=btn.closest('.faq-item');
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+
+  /* Animated counters */
+  function animateCounter(el){
+    const target=parseFloat(el.dataset.target);
+    if(!target) return;
+    const isFloat=target%1!==0;
+    const duration=1600;
+    const step=16;
+    const steps=duration/step;
+    const inc=target/steps;
+    let cur=0;
+    const sup=el.querySelector('sup')?.outerHTML||'';
+    const timer=setInterval(()=>{
+      cur+=inc;
+      if(cur>=target){cur=target;clearInterval(timer);}
+      el.innerHTML=(isFloat?cur.toFixed(1):Math.floor(cur))+sup;
+    },step);
+  }
+  const cntObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+        cntObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  document.getElementById('counters')&&cntObs.observe(document.getElementById('counters'));
+
+  /* Mouse glow */
+  const gl=document.getElementById('glow');
+  document.addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth*100).toFixed(1), y=(e.clientY/innerHeight*100).toFixed(1);
+    gl.style.background=`radial-gradient(ellipse 700px 600px at ${x}% ${y}%, rgba(255,255,255,0.028) 0%, transparent 68%)`;
+  });
+
+  /* Reveal */
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*55);io.unobserve(e.target);}});
+  },{threshold:.1});
+  document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+
+  /* Sticky nav */
+  const nav=document.getElementById('navpill');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+  /* Parallax */
+  const wm=document.querySelector('.hero-wm');
+  if(wm) window.addEventListener('scroll',()=>{wm.style.transform=`translateY(calc(-50% + ${scrollY*.14}px))`;},{passive:true});
+
+  /* Burger toggle */
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMenu() {
+    burgerBtn.classList.add('open');
+    mobileMenu.classList.add('open');
+    burgerBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu() {
+    burgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    burgerBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  if(burgerBtn) {
+    burgerBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      burgerBtn.classList.contains('open') ? closeMenu() : openMenu();
+    });
+  }
+  /* Close on outside click */
+  document.addEventListener('click', e => {
+    if(mobileMenu?.classList.contains('open') && !mobileMenu.contains(e.target) && !burgerBtn.contains(e.target)) closeMenu();
+  });
+
+  /* Sticky bottom bar вЂ” hide on scroll down, show on scroll up */
+  const bar=document.getElementById('mobBar');
+  if(bar){
+    let lastY=0;
+    window.addEventListener('scroll',()=>{
+      const y=window.scrollY;
+      if(y<80){ bar.classList.remove('hide'); }
+      else if(y>lastY+8){ bar.classList.add('hide'); }
+      else if(y<lastY-8){ bar.classList.remove('hide'); }
+      lastY=y;
+    },{passive:true});
+  }
+
+  /* Halls scroll dots */
+  const grid=document.querySelector('.halls-grid');
+  const dotsWrap=document.querySelector('.halls-dots');
+  if(grid&&dotsWrap){
+    const cards=[...grid.querySelectorAll('.hcard2')];
+    const dots=[...dotsWrap.querySelectorAll('span')];
+    function updateDots(){
+      if(!cards[0]) return;
+      const cardW = cards[0].offsetWidth + 12;
+      const idx = Math.min(Math.round(grid.scrollLeft / cardW), dots.length - 1);
+      dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    }
+    grid.addEventListener('scroll', updateDots, {passive:true});
+    updateDots();
+  }
+
+  /* Pricing accordion */
+  function togglePrice(head) {
+    const item = head.closest('.pa-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.pa-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // ── Hero card 3D tilt + parallax ──
+  (function(){
+    const card = document.getElementById('heroCard');
+    const inner = document.getElementById('heroCardInner');
+    if(!card || !inner) return;
+    const layers = [...card.querySelectorAll('[data-depth]')];
+    const MAX = 9; // макс. наклон в градусах
+    let raf = null;
+
+    function onMove(e){
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;   // -0.5..0.5
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(()=>{
+        inner.style.transition = 'transform .08s linear';
+        inner.style.transform = `rotateY(${px*MAX}deg) rotateX(${-py*MAX}deg)`;
+        layers.forEach(el=>{
+          const d = parseFloat(el.dataset.depth) || 0;
+          el.style.transition = 'transform .08s linear';
+          el.style.transform = `translate3d(${-px*d}px, ${-py*d}px, 0)`;
+        });
+      });
+    }
+    function onLeave(){
+      if(raf) cancelAnimationFrame(raf);
+      inner.style.transition = 'transform .5s var(--ease)';
+      inner.style.transform = 'rotateY(0) rotateX(0)';
+      layers.forEach(el=>{
+        el.style.transition = 'transform .5s var(--ease)';
+        el.style.transform = 'translate3d(0,0,0)';
+      });
+    }
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', onLeave);
+  })();
+
+  // ── Promo show all (mobile) ──
+  function togglePromo(btn){
+    const grid = document.getElementById('promoGrid');
+    const collapsed = grid.classList.toggle('collapsed');
+    btn.classList.toggle('expanded', !collapsed);
+    btn.firstChild.textContent = collapsed ? 'Показать все акции' : 'Свернуть акции';
+  }
+
+  // ── Price tabs ──
+  function switchPriceTab(btn, id) {
+    document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.ppanel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('ptab-' + id)?.classList.add('active');
+  }
+
+  // ── Lightbox ──
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.gi').forEach(gi => {
+    gi.addEventListener('click', () => {
+      const src = gi.querySelector('.gi-img')?.src;
+      const alt = gi.querySelector('.gi-img')?.alt || '';
+      if (!src) return;
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  lb.addEventListener('click', e => {
+    if (e.target === lb || e.target.id === 'lightbox-close') {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+
+  // ── Scroll to top ──
+  const bt = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    bt.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+  bt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <div id="lightbox-close" aria-label="Закрыть">✕</div>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
+<button id="backTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ══════════ COOKIE BANNER ══════════ -->
+<div id="cookieBar" role="dialog" aria-label="Уведомление об использовании cookie" aria-live="polite" style="
+  display:none; position:fixed; left:50%; bottom:16px; transform:translateX(-50%);
+  z-index:2100; width:min(680px,92%);
+  background:rgba(14,14,14,.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.14); border-radius:16px;
+  padding:1.1rem 1.3rem; box-shadow:0 12px 40px rgba(0,0,0,.55);
+  font-family:'Inter',sans-serif; color:rgba(255,255,255,.82);
+  display:none; flex-direction:column; gap:.9rem;">
+  <div style="font-size:.85rem; line-height:1.55;">
+    Мы используем файлы cookie и обрабатываем данные (в т.ч. через встроенные Яндекс.Карты)
+    для корректной работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с этим и с
+    <a href="privacy.html" style="color:#fff; text-decoration:underline;">Политикой конфиденциальности</a>.
+  </div>
+  <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+    <button id="cookieOk" style="
+      background:#fff; color:#080808; border:none; border-radius:10px;
+      padding:.6em 1.4em; font-family:'Inter',sans-serif; font-size:.85rem; font-weight:600; cursor:pointer;">
+      Принять
+    </button>
+    <a href="privacy.html" style="
+      background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:10px;
+      padding:.6em 1.4em; font-size:.85rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center;">
+      Подробнее
+    </a>
+  </div>
+</div>
+<script>
+  (function(){
+    var KEY='topmain_cookie_consent';
+    var bar=document.getElementById('cookieBar');
+    if(!bar) return;
+    try {
+      if(localStorage.getItem(KEY)==='1') return;
+    } catch(e){}
+    bar.style.display='flex';
+    document.getElementById('cookieOk').addEventListener('click',function(){
+      try { localStorage.setItem(KEY,'1'); } catch(e){}
+      bar.style.display='none';
+    });
+  })();
+</script>
+
+</body>
+</html>
