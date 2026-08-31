@@ -23,6 +23,10 @@ class PlanCB(CallbackData, prefix="plan"):
     method: str = "-"  # payment method for "pay" action
 
 
+class PurchaseCB(CallbackData, prefix="buyflow"):
+    action: str  # "email_skip"
+
+
 class PayCheckCB(CallbackData, prefix="paycheck"):
     payment_id: int
 
