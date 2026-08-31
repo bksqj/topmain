@@ -61,3 +61,7 @@ python -m bot.main
   (или по общему секрету `YOOKASSA_WEBHOOK_SECRET` в заголовке
   `X-Webhook-Secret`).
 - Тексты вынесены в `texts.py` и `content.py` — редактируются без изменения логики.
+- Кастомные эмодзи-иконки на кнопках (Bot API 9.4, `icon_custom_emoji_id`)
+  настраиваются через `CUSTOM_EMOJI_IDS` (см. `.env.example`) и слоты в
+  `bot/emojis.py`. Работают только при активном Telegram Premium у владельца
+  бота; без ID/Premium кнопки показывают обычные эмодзи (fallback).

@@ -44,6 +44,9 @@ class Settings(BaseSettings):
     webhook_host: str = Field(default="0.0.0.0", alias="WEBHOOK_HOST")
     webhook_port: int = Field(default=8080, alias="WEBHOOK_PORT")
 
+    # Custom emoji icons for buttons (Bot API 9.4). JSON: {"menu.cabinet": "id"}
+    custom_emoji_ids_raw: str = Field(default="", alias="CUSTOM_EMOJI_IDS")
+
     # Trial plan
     trial_plan_name: str = Field(default="Пробный", alias="TRIAL_PLAN_NAME")
     trial_traffic_gb: int = Field(default=5, alias="TRIAL_TRAFFIC_GB")
@@ -57,6 +60,16 @@ class Settings(BaseSettings):
             if chunk.isdigit():
                 result.add(int(chunk))
         return result
+
+    @property
+    def custom_emoji_ids(self) -> dict[str, str]:
+        try:
+            data = json.loads(self.custom_emoji_ids_raw or "{}")
+            if isinstance(data, dict):
+                return {str(k): str(v) for k, v in data.items()}
+        except (json.JSONDecodeError, TypeError):
+            pass
+        return {}
 
     @property
     def marzban_default_proxies(self) -> dict:

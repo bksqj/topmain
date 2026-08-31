@@ -15,6 +15,7 @@ from ..callbacks import (
     PlanCB,
     SetupCB,
 )
+from .. import emojis
 from ..content import DEVICE_TYPES, SETUP_APPS
 from ..locations import Location
 from ..plans import Plan, discount_percent
@@ -23,7 +24,25 @@ from .pagination import Page
 BACK = "🔙 Назад"
 
 
+def _icon_btn(emoji: str, label: str, callback, icon_key: str) -> InlineKeyboardButton:
+    """A button with a custom-emoji icon when configured, else a plain emoji.
+
+    `callback` is a CallbackData instance (packed here).
+    """
+    icon_id = emojis.icon(icon_key)
+    if icon_id:
+        return InlineKeyboardButton(
+            text=label, callback_data=callback.pack(), icon_custom_emoji_id=icon_id
+        )
+    return InlineKeyboardButton(text=f"{emoji} {label}", callback_data=callback.pack())
+
+
 def _back_button(to: str) -> InlineKeyboardButton:
+    icon_id = emojis.icon("nav.back")
+    if icon_id:
+        return InlineKeyboardButton(
+            text="Назад", callback_data=Nav(to=to).pack(), icon_custom_emoji_id=icon_id
+        )
     return InlineKeyboardButton(text=BACK, callback_data=Nav(to=to).pack())
 
 
@@ -31,11 +50,10 @@ def _back_button(to: str) -> InlineKeyboardButton:
 
 def main_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="👤 Личный кабинет", callback_data=Nav(to="cabinet"))
-    kb.button(text="👥 Реферальная программа", callback_data=Nav(to="referral"))
-    kb.button(text="🎧 Помощь", callback_data=Nav(to="help"))
-    kb.button(text="ℹ️ О нас", callback_data=Nav(to="about"))
-    kb.adjust(1)
+    kb.row(_icon_btn("👤", "Личный кабинет", Nav(to="cabinet"), "menu.cabinet"))
+    kb.row(_icon_btn("👥", "Реферальная программа", Nav(to="referral"), "menu.referral"))
+    kb.row(_icon_btn("🎧", "Помощь", Nav(to="help"), "menu.help"))
+    kb.row(_icon_btn("ℹ️", "О нас", Nav(to="about"), "menu.about"))
     return kb.as_markup()
 
 
@@ -43,9 +61,8 @@ def main_menu() -> InlineKeyboardMarkup:
 
 def cabinet_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="⚡ Подписка", callback_data=Nav(to="subscription"))
-    kb.button(text="🔗 Ключ", callback_data=Nav(to="key"))
-    kb.adjust(1)
+    kb.row(_icon_btn("⚡", "Подписка", Nav(to="subscription"), "cabinet.subscription"))
+    kb.row(_icon_btn("🔗", "Ключ", Nav(to="key"), "cabinet.key"))
     kb.row(_back_button("main"))
     return kb.as_markup()
 
@@ -53,10 +70,9 @@ def cabinet_menu() -> InlineKeyboardMarkup:
 def subscription_menu(is_trial: bool) -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
     if is_trial:
-        kb.button(text="✨ Купить подписку", callback_data=Nav(to="buy"))
+        kb.row(_icon_btn("✨", "Купить подписку", Nav(to="buy"), "buy"))
     else:
-        kb.button(text="🔄 Продлить подписку", callback_data=Nav(to="buy"))
-    kb.adjust(1)
+        kb.row(_icon_btn("🔄", "Продлить подписку", Nav(to="buy"), "buy"))
     kb.row(_back_button("cabinet"))
     return kb.as_markup()
 
@@ -183,10 +199,11 @@ def referral_code_menu(link: str) -> InlineKeyboardMarkup:
 
 def help_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="⚙️ Установка и настройка", callback_data=Nav(to="setup"))
-    kb.button(text="❓ Ответы на вопросы", callback_data=PageNav(list="faq", page=1))
-    kb.button(text="💬 Техподдержка", callback_data=Nav(to="support"))
-    kb.adjust(1)
+    kb.row(_icon_btn("⚙️", "Установка и настройка", Nav(to="setup"), "help.setup"))
+    kb.row(
+        _icon_btn("❓", "Ответы на вопросы", PageNav(list="faq", page=1), "help.faq")
+    )
+    kb.row(_icon_btn("💬", "Техподдержка", Nav(to="support"), "help.support"))
     kb.row(_back_button("main"))
     return kb.as_markup()
 
@@ -265,11 +282,10 @@ def faq_item_menu() -> InlineKeyboardMarkup:
 
 def about_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="📄 Правила пользования сервисом", callback_data=Nav(to="rules"))
-    kb.button(text="📄 Условия возврата", callback_data=Nav(to="refund"))
-    kb.button(text="📍 Локации", callback_data=Nav(to="locations_view"))
-    kb.button(text="🏷️ Тарифы", callback_data=Nav(to="tariffs_view"))
-    kb.adjust(1)
+    kb.row(_icon_btn("📄", "Правила пользования сервисом", Nav(to="rules"), "about.rules"))
+    kb.row(_icon_btn("📄", "Условия возврата", Nav(to="refund"), "about.refund"))
+    kb.row(_icon_btn("📍", "Локации", Nav(to="locations_view"), "about.locations"))
+    kb.row(_icon_btn("🏷️", "Тарифы", Nav(to="tariffs_view"), "about.tariffs"))
     kb.row(_back_button("main"))
     return kb.as_markup()
 
