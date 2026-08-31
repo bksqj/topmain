@@ -13,7 +13,6 @@ from ..callbacks import (
     PageNav,
     PayCheckCB,
     PlanCB,
-    PurchaseCB,
     SetupCB,
 )
 from ..content import DEVICE_TYPES, SETUP_APPS
@@ -147,19 +146,6 @@ def payment_methods_menu(plan_key: str) -> InlineKeyboardMarkup:
     )
     kb.adjust(1)
     kb.row(_back_button("buy"))
-    return kb.as_markup()
-
-
-def email_menu(plan_key: str) -> InlineKeyboardMarkup:
-    """Email-for-receipt step: skip, or go back to the plan card."""
-    kb = InlineKeyboardBuilder()
-    kb.button(text="⏭ Пропустить", callback_data=PurchaseCB(action="email_skip"))
-    kb.adjust(1)
-    kb.row(
-        InlineKeyboardButton(
-            text=BACK, callback_data=PlanCB(action="choose", key=plan_key).pack()
-        )
-    )
     return kb.as_markup()
 
 

@@ -35,13 +35,10 @@ async def create_payment(
     description: str,
     metadata: dict,
     method: str = "yookassa",
-    receipt_email: str | None = None,
 ) -> PaymentResult:
     """Create a YooKassa payment and return its id + confirmation url.
 
     `method` may be "sbp" to request the SBP payment method explicitly.
-    `receipt_email`, when given, attaches a fiscal receipt (54-ФЗ) so the
-    customer is emailed a cheque.
     """
     return_url = f"https://t.me/{_settings.bot_username}?start=paid"
 
@@ -59,22 +56,6 @@ async def create_payment(
     }
     if method == "sbp":
         payload["payment_method_data"] = {"type": "sbp"}
-    if receipt_email:
-        # Fiscal receipt for 54-ФЗ. vat_code=1 = "без НДС"; adjust to your
-        # tax setup. payment_subject "service" marks it as a service.
-        payload["receipt"] = {
-            "customer": {"email": receipt_email},
-            "items": [
-                {
-                    "description": description[:128],
-                    "quantity": "1.00",
-                    "amount": {"value": f"{amount_rub:.2f}", "currency": "RUB"},
-                    "vat_code": 1,
-                    "payment_mode": "full_payment",
-                    "payment_subject": "service",
-                }
-            ],
-        }
 
     def _create() -> object:
         return YooPayment.create(payload, uuid.uuid4().hex)

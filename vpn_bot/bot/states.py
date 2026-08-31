@@ -11,10 +11,6 @@ class SetupWizard(StatesGroup):
     import_key = State()
 
 
-class PurchaseFlow(StatesGroup):
-    email = State()
-
-
 class SupportFlow(StatesGroup):
     waiting_message = State()
 
