@@ -267,7 +267,7 @@ def about_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
     kb.button(text="📄 Правила пользования сервисом", callback_data=Nav(to="rules"))
     kb.button(text="📄 Условия возврата", callback_data=Nav(to="refund"))
-    kb.button(text="📍 Локации", callback_data=PageNav(list="locations_about", page=1))
+    kb.button(text="📍 Локации", callback_data=Nav(to="locations_view"))
     kb.button(text="🏷️ Тарифы", callback_data=Nav(to="tariffs_view"))
     kb.adjust(1)
     kb.row(_back_button("main"))
@@ -280,12 +280,6 @@ def about_sub_menu() -> InlineKeyboardMarkup:
     return kb.as_markup()
 
 
-def about_locations_menu(page: Page) -> InlineKeyboardMarkup:
-    """Locations list shown under О нас — back goes to About, not Key."""
-    kb = InlineKeyboardBuilder()
-    kb.row(*_pager_row("locations_about", page))
-    kb.row(_back_button("about"))
-    return kb.as_markup()
 
 
 # ---- Admin ---------------------------------------------------------------

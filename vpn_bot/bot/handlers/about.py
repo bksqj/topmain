@@ -4,7 +4,7 @@ from __future__ import annotations
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
 
-from .. import texts
+from .. import locations, texts
 from ..callbacks import Nav
 from ..keyboards import inline
 from ..plans import PLANS, discount_percent
@@ -16,6 +16,12 @@ router = Router(name="about")
 @router.callback_query(Nav.filter(F.to == "rules"))
 async def rules(call: CallbackQuery) -> None:
     await edit_screen(call, texts.RULES, inline.about_sub_menu())
+    await call.answer()
+
+
+@router.callback_query(Nav.filter(F.to == "locations_view"))
+async def locations_view(call: CallbackQuery) -> None:
+    await edit_screen(call, locations.full_list_text(), inline.about_sub_menu())
     await call.answer()
 
 

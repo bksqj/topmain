@@ -132,13 +132,6 @@ async def locations_page(call: CallbackQuery, callback_data: PageNav) -> None:
     await call.answer()
 
 
-@router.callback_query(PageNav.filter(F.list == "locations_about"))
-async def locations_about_page(call: CallbackQuery, callback_data: PageNav) -> None:
-    text, page, _ = _render_locations(callback_data.page)
-    await edit_screen(call, text, inline.about_locations_menu(page))
-    await call.answer()
-
-
 @router.callback_query(LocationCB.filter())
 async def choose_location(
     call: CallbackQuery, callback_data: LocationCB, session: AsyncSession
