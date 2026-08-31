@@ -74,8 +74,19 @@ async def to_key(call: CallbackQuery, session: AsyncSession) -> None:
         await edit_screen(call, texts.NO_KEY_YET, inline.key_no_sub_menu())
         await call.answer()
         return
-    await edit_screen(call, texts.key_card(sub.subscription_url), inline.key_menu())
+    label = _current_location_label(sub)
+    await edit_screen(
+        call, texts.key_card(label, sub.subscription_url), inline.key_menu()
+    )
     await call.answer()
+
+
+def _current_location_label(sub) -> str:
+    """Label of the user's active location; default to the first server."""
+    loc = LOCATIONS_BY_TAG.get(sub.node_tag) if sub.node_tag else None
+    if loc is None:
+        loc = FALLBACK_LOCATIONS[0]
+    return loc.label()
 
 
 @router.callback_query(KeyActionCB.filter(F.action == "copy"))
@@ -111,7 +122,9 @@ async def key_reissue_confirm(call: CallbackQuery, session: AsyncSession) -> Non
     sub = await reissue_key(session, sub)
     await call.answer(texts.REISSUE_DONE, show_alert=True)
     url = sub.subscription_url or ""
-    await edit_screen(call, texts.key_card(url), inline.key_menu())
+    await edit_screen(
+        call, texts.key_card(_current_location_label(sub), url), inline.key_menu()
+    )
 
 
 # ---- Locations -----------------------------------------------------------

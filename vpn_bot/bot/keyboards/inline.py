@@ -33,7 +33,7 @@ def main_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
     kb.button(text="👤 Личный кабинет", callback_data=Nav(to="cabinet"))
     kb.button(text="👥 Реферальная программа", callback_data=Nav(to="referral"))
-    kb.button(text="🆘 Помощь", callback_data=Nav(to="help"))
+    kb.button(text="🎧 Помощь", callback_data=Nav(to="help"))
     kb.button(text="ℹ️ О нас", callback_data=Nav(to="about"))
     kb.adjust(1)
     return kb.as_markup()
@@ -43,8 +43,8 @@ def main_menu() -> InlineKeyboardMarkup:
 
 def cabinet_menu() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="📶 Подписка", callback_data=Nav(to="subscription"))
-    kb.button(text="🔑 Ключ", callback_data=Nav(to="key"))
+    kb.button(text="⚡ Подписка", callback_data=Nav(to="subscription"))
+    kb.button(text="🔗 Ключ", callback_data=Nav(to="key"))
     kb.adjust(1)
     kb.row(_back_button("main"))
     return kb.as_markup()

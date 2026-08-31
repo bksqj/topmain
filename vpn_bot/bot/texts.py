@@ -7,19 +7,21 @@ from __future__ import annotations
 
 # ---- Main menu -----------------------------------------------------------
 
-MAIN_MENU = (
-    "<b>🛡 Nekit</b>\n\n"
-    "Стабильный доступ к веб-сайтам, API и другим онлайн-платформам "
-    "через серверы, расположенные по всему миру.\n"
-    "Выберите раздел ниже, чтобы начать."
+MAIN_MENU = "<b>Главное меню:</b>"
+
+# Bot bio shown as "Что умеет этот бот?" — set via BotFather or on startup.
+BOT_DESCRIPTION = (
+    "Nekit — это онлайн-сервис, предоставляющий возможность "
+    "взаимодействовать с веб-сайтами, API и другими онлайн-платформами "
+    "через сервера, расположенные по всему миру."
+)
+BOT_SHORT_DESCRIPTION = (
+    "Доступ к веб-сайтам, API и онлайн-платформам через серверы по всему миру."
 )
 
 # ---- Personal cabinet ----------------------------------------------------
 
-CABINET = (
-    "<b>👤 Личный кабинет</b>\n\n"
-    "Здесь ваша подписка и ключ доступа."
-)
+CABINET = "<b>Личный кабинет:</b>"
 
 
 def subscription_card(
@@ -39,9 +41,10 @@ def subscription_card(
     )
 
 
-def key_card(subscription_url: str) -> str:
+def key_card(location_label: str, subscription_url: str) -> str:
     return (
-        "<b>🔑 Ваш ключ:</b>\n\n"
+        f"<b>{location_label}</b>\n\n"
+        "Нажмите на ключ, чтобы скопировать:\n"
         f"<code>{subscription_url}</code>"
     )
 

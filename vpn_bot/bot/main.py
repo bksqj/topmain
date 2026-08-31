@@ -34,6 +34,17 @@ def build_dispatcher() -> Dispatcher:
     return dp
 
 
+async def _set_bot_bio(bot: Bot) -> None:
+    """Set the 'Что умеет этот бот?' description and short bio."""
+    from . import texts
+
+    try:
+        await bot.set_my_description(texts.BOT_DESCRIPTION)
+        await bot.set_my_short_description(texts.BOT_SHORT_DESCRIPTION)
+    except Exception:  # pragma: no cover - non-fatal
+        logger.warning("could not set bot description")
+
+
 async def _run_webhook(bot: Bot) -> None:
     settings = get_settings()
     app = create_app(bot)
@@ -55,6 +66,7 @@ async def main() -> None:
         token=settings.bot_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
+    await _set_bot_bio(bot)
     dp = build_dispatcher()
 
     scheduler = setup_scheduler(bot)
