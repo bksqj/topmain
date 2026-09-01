@@ -1,9 +1,9 @@
 """Catalog of VPN locations.
 
-In production this can be fetched from Marzban (available inbounds / nodes);
-here it is a static list that mirrors the panel. `tag` is a unique internal
-slug used when switching a user's node — map it to the real Marzban inbound
-tag in `services.provisioning.switch_location` when wiring the panel.
+In production this can be fetched from Remnawave (internal squads); here it is
+a static list that mirrors the panel. `tag` is a unique internal slug — in
+production set it to the squad UUID so `services.provisioning.switch_location`
+can assign it to the user.
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ class Location:
         return f"{self.flag} {self.name}"
 
 
-# (flag, name) pairs in display order — mirrors the Marzban panel.
+# (flag, name) pairs in display order — mirrors the Remnawave panel.
 _RAW: list[tuple[str, str]] = [
     ("🇵🇱", "Poland | Warsaw"),
     ("🇵🇱", "Poland | Warsaw | HY2"),

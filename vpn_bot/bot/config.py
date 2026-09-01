@@ -24,15 +24,16 @@ class Settings(BaseSettings):
         default="sqlite+aiosqlite:///./vpn_bot.db", alias="DATABASE_URL"
     )
 
-    # Marzban
-    marzban_base_url: str = Field(default="", alias="MARZBAN_BASE_URL")
-    marzban_username: str = Field(default="", alias="MARZBAN_USERNAME")
-    marzban_password: str = Field(default="", alias="MARZBAN_PASSWORD")
-    marzban_default_proxies_raw: str = Field(
-        default='{"vless": {}}', alias="MARZBAN_DEFAULT_PROXIES"
+    # Remnawave panel (VPN backend)
+    remnawave_base_url: str = Field(default="", alias="REMNAWAVE_BASE_URL")
+    remnawave_token: str = Field(default="", alias="REMNAWAVE_TOKEN")
+    # Squad UUIDs assigned to new users (JSON array of uuids)
+    remnawave_default_squads_raw: str = Field(
+        default="[]", alias="REMNAWAVE_DEFAULT_SQUADS"
     )
-    marzban_default_inbounds_raw: str = Field(
-        default="{}", alias="MARZBAN_DEFAULT_INBOUNDS"
+    # NO_RESET | DAY | WEEK | MONTH | MONTH_ROLLING
+    remnawave_traffic_strategy: str = Field(
+        default="MONTH", alias="REMNAWAVE_TRAFFIC_STRATEGY"
     )
 
     # YooKassa
@@ -72,18 +73,14 @@ class Settings(BaseSettings):
         return {}
 
     @property
-    def marzban_default_proxies(self) -> dict:
+    def remnawave_default_squads(self) -> list[str]:
         try:
-            return json.loads(self.marzban_default_proxies_raw)
+            data = json.loads(self.remnawave_default_squads_raw or "[]")
+            if isinstance(data, list):
+                return [str(x) for x in data]
         except (json.JSONDecodeError, TypeError):
-            return {"vless": {}}
-
-    @property
-    def marzban_default_inbounds(self) -> dict:
-        try:
-            return json.loads(self.marzban_default_inbounds_raw)
-        except (json.JSONDecodeError, TypeError):
-            return {}
+            pass
+        return []
 
 
 @lru_cache

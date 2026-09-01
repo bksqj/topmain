@@ -1,6 +1,6 @@
 """Static catalog of tariff plans and helper lookups.
 
-Prices are in RUB. `months` drives Marzban expiry extension. `discount`
+Prices are in RUB. `months` drives the panel expiry extension. `discount`
 is the percent saved versus paying the 1-month price each month, shown in UI.
 """
 from __future__ import annotations

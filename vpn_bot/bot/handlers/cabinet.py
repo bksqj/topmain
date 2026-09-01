@@ -157,8 +157,6 @@ async def choose_location(
     if sub is None:
         await call.answer("Сначала оформите подписку", show_alert=True)
         return
-    # inbounds mapping is Marzban-config specific; pass the tag through
-    await switch_location(
-        session, sub, node_tag=loc.tag, inbounds={"vless": [loc.tag]}
-    )
+    # node_tag maps to a Remnawave squad UUID in production (demo: slug only)
+    await switch_location(session, sub, node_tag=loc.tag)
     await call.answer(texts.LOCATION_SWITCHED.format(label=loc.label()), show_alert=True)

@@ -47,9 +47,11 @@ class Subscription(Base):
     traffic_limit_gb: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     traffic_used_gb: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     expires_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    marzban_username: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    # Remnawave user identifiers
+    remnawave_uuid: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    remnawave_short_uuid: Mapped[str | None] = mapped_column(String(64), nullable=True)
     subscription_url: Mapped[str | None] = mapped_column(String(512), nullable=True)
-    # last node/location tag applied in Marzban (for UI highlighting)
+    # last squad/location tag applied in the panel (for UI highlighting)
     node_tag: Mapped[str | None] = mapped_column(String(128), nullable=True)
 
     user: Mapped["User"] = relationship(back_populates="subscription")
